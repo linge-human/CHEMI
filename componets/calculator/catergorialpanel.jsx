@@ -1,53 +1,46 @@
-import React from "react";
+import React from 'react';
 
-export default function CategoryPanel({ 
-  categories, 
-  functions, 
-  selectedCategory, 
-  onSelectCategory, 
-  onAddCalculation 
-}) {
-  const currentFunctions = functions.filter(fn => fn.category === selectedCategory);
+const categories = [
+    {
+        name: 'Atomic Structure',
+        calculators: ['Molar Mass', 'Percent Composition', 'Solubility Check', 'Compound Naming']
+    },
+    {
+        name: 'Stoichiometry',
+        calculators: ['Molarity', 'Stoichiometry']
+    },
+    {
+        name: 'Gas Laws',
+        calculators: ['Gas Law']
+    },
+    {
+        name: 'Solutions & pH',
+        calculators: ['pH']
+    }
+];
 
-  return (
-    <div className="min-w-[260px] w-full md:w-[260px] bg-gray-50 border-r-2 border-gray-200 p-7">
-      <div className="space-y-6">
-        {/* Categories */}
-        <div>
-          <h3 className="text-lg font-bold text-gray-800 mb-3">Categories</h3>
-          <div className="space-y-1">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => onSelectCategory(category.id)}
-                className={`w-full text-left px-3 py-2 rounded text-base font-semibold transition-colors ${
-                  selectedCategory === category.id
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
-          </div>
+export default function CategoryPanel({ onAddCalculation }) {
+    return (
+        <div className="bg-card p-6 rounded-xl shadow-md border border-border">
+            <h2 className="text-2xl font-bold mb-6 text-foreground">Add a Calculation</h2>
+            <div className="space-y-6">
+                {categories.map(category => (
+                    <div key={category.name}>
+                        <h3 className="text-lg font-semibold mb-3 text-muted-foreground">{category.name}</h3>
+                        <div className="grid grid-cols-2 gap-3">
+                            {category.calculators.map(calcName => (
+                                <button
+                                    key={calcName}
+                                    onClick={() => onAddCalculation(calcName)}
+                                    className="w-full bg-secondary text-secondary-foreground font-semibold py-2 px-3 rounded-md hover:bg-secondary/80 transition-colors text-sm text-left"
+                                >
+                                    {calcName}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-
-        {/* Functions */}
-        <div>
-          <h3 className="text-lg font-bold text-gray-800 mb-3">Calculations</h3>
-          <div className="space-y-1">
-            {currentFunctions.map((fn) => (
-              <button
-                key={fn.id}
-                onClick={() => onAddCalculation(fn.id)}
-                className="w-full text-left px-3 py-2 rounded text-base font-normal text-gray-700 hover:bg-gray-200 transition-colors"
-              >
-                {fn.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
