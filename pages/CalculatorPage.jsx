@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import CategoryPanel from "../components/calculator/CategoryPanel";
 import CalculationWorkspace from "../components/calculator/CalculationWorkspace";
 
@@ -13,24 +12,26 @@ const calculationCategories = [
 
 const calculationFunctions = [
   // Stoichiometry
-  { category: "stoich", name: "Mole Calculation", id: "mole", desc: "Calculate moles from mass and molar mass" },
-  { category: "stoich", name: "Mass Calculation", id: "mass", desc: "Calculate mass from moles and molar mass" },
-  { category: "stoich", name: "Percent Yield", id: "yield", desc: "Calculate percent yield" },
+  { category: "stoich", name: "Mole Calculation", id: "mole" },
+  { category: "stoich", name: "Mass Calculation", id: "mass" },
+  { category: "stoich", name: "Percent Yield", id: "yield" },
   
   // Solutions
-  { category: "solutions", name: "Molarity", id: "molarity", desc: "Calculate solution molarity" },
-  { category: "solutions", name: "Dilution", id: "dilution", desc: "Dilution calculations (M₁V₁=M₂V₂)" },
-  { category: "solutions", name: "pH Calculation", id: "ph", desc: "Calculate pH from H⁺ concentration" },
+  { category: "solutions", name: "Molarity", id: "molarity" },
+  { category: "solutions", name: "Dilution", id: "dilution" },
+  { category: "solutions", name: "pH Calculation", id: "ph" },
   
   // Atomic Structure
-  { category: "atomic", name: "Molar Mass", id: "molar-mass", desc: "Calculate molar mass of a compound" },
-  { category: "atomic", name: "Percent Composition", id: "percent-comp", desc: "Calculate percent composition" },
+  { category: "atomic", name: "Molar Mass", id: "molar-mass" },
+  { category: "atomic", name: "Percent Composition", id: "percent-comp" },
+  { category: "atomic", name: "Ion Charge", id: "ion" },
+  { category: "atomic", name: "Solubility Check", id: "solubility-check" },
   
   // Conversions
-  { category: "conversions", name: "Temperature", id: "temp", desc: "Convert between °C, K, and °F" },
+  { category: "conversions", name: "Temperature", id: "temp" },
   
   // General
-  { category: "general", name: "Gas Laws", id: "gas-laws", desc: "PV=nRT calculations" },
+  { category: "general", name: "Gas Laws", id: "gas-laws" },
 ];
 
 export default function CalculatorPage() {
@@ -52,7 +53,7 @@ export default function CalculatorPage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-[calc(100vh-88px)]">
+    <div className="flex flex-col md:flex-row min-h-[calc(100vh-88px)] bg-background">
       <CategoryPanel
         categories={calculationCategories}
         functions={calculationFunctions}
