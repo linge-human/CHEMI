@@ -1,44 +1,65 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import CalculationBox from "./CalculationBox";
-import { XCircle } from "lucide-react";
+import React from 'react';
+import MolarMassCalculator from './calculations/MolarMassCalculator';
+import PercentCompositionCalculator from './calculations/PercentCompositionCalculator';
+import SolubilityCheck from './calculations/SolubilityCheck';
+import CompoundNamer from './calculations/CompoundNamer';
+import MolarityCalculator from './calculations/MolarityCalculator';
+import StoichiometryCalculator from './calculations/StoichiometryCalculator';
+import GasLawCalculator from './calculations/GasLawCalculator';
+import PhCalculator from './calculations/PhCalculator';
+import CalculationBox from './CalculationBox';
+import { DndContext, closestCenter } from '@dnd-kit/core';
+import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
-export default function CalculationWorkspace({ calculationBlocks, functions, onRemoveCalculation, onClearAll }) {
+const calculationComponents = {
+    'Molar Mass': MolarMassCalculator,
+    'Percent Composition': PercentCompositionCalculator,
+    'Solubility Check': SolubilityCheck,
+    'Compound Naming': CompoundNamer,
+    'Molarity': MolarityCalculator,
+    'Stoichiometry': StoichiometryCalculator,
+    'Gas Law': GasLawCalculator,
+    'pH': PhCalculator
+};
 
-  return (
-    <div className="flex-1 p-4 md:p-7 bg-white">
-      {calculationBlocks.length > 0 && (
-        <div className="flex justify-end mb-4">
-          <Button variant="destructive" onClick={onClearAll}>
-            <XCircle className="w-4 h-4 mr-2" />
-            Clear All
-          </Button>
-        </div>
-      )}
-      <div className="flex flex-wrap gap-7 justify-start items-start">
-        {calculationBlocks.map((block) => {
-          const calculation = functions.find(fn => fn.id === block.functionId);
-          if (!calculation) return null;
-          return (
-            <CalculationBox
-              key={block.id}
-              blockId={block.id}
-              functionId={calculation.id}
-              functionName={calculation.name}
-              onRemove={onRemoveCalculation}
-            />
-          );
-        })}
-        
-        {calculationBlocks.length === 0 && (
-          <div className="flex items-center justify-center w-full h-64 text-gray-500">
-            <div className="text-center">
-              <div className="text-4xl mb-4">🧪</div>
-              <p className="text-lg">Select a calculation from the left panel to get started.</p>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+export default function CalculationWorkspace({ calculations, updateCalculation, removeCalculation, setCalculations }) {
+
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
+        if (active.id !== over.id) {
+            setCalculations((items) => {
+                const oldIndex = items.findIndex(item => item.id === active.id);
+                const newIndex = items.findIndex(item => item.id === over.id);
+                return arrayMove(items, oldIndex, newIndex);
+            });
+        }
+    };
+
+    return (
+        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <SortableContext items={calculations.map(c => c.id)} strategy={verticalListSortingStrategy}>
+                <div className="space-y-6">
+                    {calculations.map(calc => {
+                        const CalculationComponent = calculationComponents[calc.type];
+                        return (
+                            <CalculationBox
+                                key={calc.id}
+                                id={calc.id}
+                                type={calc.type}
+                                onRemove={() => removeCalculation(calc.id)}
+                            >
+                                {CalculationComponent && (
+                                    <CalculationComponent
+                                        inputs={calc.inputs}
+                                        result={calc.result}
+                                        onUpdate={(newInputs, newResult) => updateCalculation(calc.id, newInputs, newResult)}
+                                    />
+                                )}
+                            </CalculationBox>
+                        );
+                    })}
+                </div>
+            </SortableContext>
+        </DndContext>
+    );
 }
