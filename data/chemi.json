@@ -8,375 +8,474 @@
         "description": "Calculate mass from moles and molar mass",
         "inputs": [
           {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
-          {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
-        ]
-      },
-      {
-        "id": "mass-moles",
-        "title": "Mass to Moles",
-        "formula": "n = m / M",
-        "description": "Calculate moles from mass and molar mass",
-        "inputs": [
-          {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
-          {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
-        ]
-      },
-      {
-        "id": "molarity",
-        "title": "Molarity Calculation",
-        "formula": "C = n / V",
-        "description": "Calculate molarity from moles and volume",
-        "inputs": [
-          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
-          {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number"}
-        ]
-      },
-      {
-        "id": "ideal-gas",
-        "title": "Ideal Gas Law",
-        "formula": "PV = nRT",
-        "description": "Calculate pressure using ideal gas law",
-        "inputs": [
-          {"id": "pressure", "label": "Pressure (P)", "unit": "atm", "type": "number"},
-          {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number"},
-          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
-          {"id": "temperature", "label": "Temperature (T)", "unit": "K", "type": "number"}
-        ]
-      },
-      {
-        "id": "stp-volume",
-        "title": "Volume at STP",
-        "formula": "V = n × 22.4",
-        "description": "Calculate gas volume at standard temperature and pressure",
-        "inputs": [
-          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"}
-        ]
-      },
-      {
-        "id": "percent-yield",
-        "title": "Percent Yield",
-        "formula": "% Yield = (Actual / Theoretical) × 100",
-        "description": "Calculate percentage yield of a reaction",
-        "inputs": [
-          {"id": "actual", "label": "Actual Yield", "unit": "g", "type": "number"},
-          {"id": "theoretical", "label": "Theoretical Yield", "unit": "g", "type": "number"}
+          {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "text", "placeholder": "Enter value or formula (e.g., H2O)"}
+        ],
+        "examples": [
+          {
+            "inputs": {"moles": 2, "molar_mass": "H2O"},
+            "result": "36.032 g",
+            "explanation": "For 2 moles of H2O (MM = 18.016 g/mol)"
+          }
         ]
       },
       {
         "id": "limiting-reagent",
-        "title": "Limiting Reagent",
+        "title": "Limiting Reagent Analysis",
         "formula": "Compare mole ratios",
         "description": "Determine the limiting reagent in a chemical reaction",
         "inputs": [
-          {"id": "moles_a", "label": "Moles of Reactant A", "unit": "mol", "type": "number"},
-          {"id": "coeff_a", "label": "Coefficient of A", "unit": "", "type": "number"},
-          {"id": "moles_b", "label": "Moles of Reactant B", "unit": "mol", "type": "number"},
-          {"id": "coeff_b", "label": "Coefficient of B", "unit": "", "type": "number"}
-        ]
-      },
-      {
-        "id": "empirical-formula",
-        "title": "Empirical Formula Mass",
-        "formula": "Sum of atomic masses",
-        "description": "Calculate empirical formula mass from element masses",
-        "inputs": [
-          {"id": "elements", "label": "Element Masses (comma-separated)", "unit": "g/mol", "type": "text"}
+          {"id": "reactant_a", "label": "Reactant A Formula", "type": "text"},
+          {"id": "mass_a", "label": "Mass of A", "unit": "g", "type": "number"},
+          {"id": "reactant_b", "label": "Reactant B Formula", "type": "text"},
+          {"id": "mass_b", "label": "Mass of B", "unit": "g", "type": "number"},
+          {"id": "coefficient_a", "label": "Coefficient of A", "type": "number"},
+          {"id": "coefficient_b", "label": "Coefficient of B", "type": "number"}
         ]
       }
     ],
-    "solutions": [
+    "equilibrium": [
       {
-        "id": "dilution",
-        "title": "Dilution Calculation",
-        "formula": "C₁V₁ = C₂V₂",
-        "description": "Calculate final volume in dilution problems",
+        "id": "equilibrium-constant",
+        "title": "Equilibrium Constant",
+        "formula": "Kc = [C]^c[D]^d / [A]^a[B]^b",
+        "description": "Calculate equilibrium constant from concentrations",
         "inputs": [
-          {"id": "c1", "label": "Initial Concentration (C₁)", "unit": "M", "type": "number"},
-          {"id": "v1", "label": "Initial Volume (V₁)", "unit": "mL", "type": "number"},
-          {"id": "c2", "label": "Final Concentration (C₂)", "unit": "M", "type": "number"}
+          {"id": "products", "label": "Product Concentrations", "type": "text", "placeholder": "C:0.5,D:0.8"},
+          {"id": "reactants", "label": "Reactant Concentrations", "type": "text", "placeholder": "A:0.2,B:0.3"},
+          {"id": "coefficients", "label": "Stoichiometric Coefficients", "type": "text", "placeholder": "a:1,b:1,c:2,d:1"}
         ]
       },
       {
-        "id": "percent-ww",
-        "title": "Percent Weight/Weight",
-        "formula": "% w/w = (mass solute / mass solution) × 100",
-        "description": "Calculate weight/weight percentage concentration",
+        "id": "ice-table",
+        "title": "ICE Table Calculator",
+        "formula": "Initial - Change = Equilibrium",
+        "description": "Calculate equilibrium concentrations using ICE tables",
         "inputs": [
-          {"id": "mass_solute", "label": "Mass of Solute", "unit": "g", "type": "number"},
-          {"id": "mass_solution", "label": "Mass of Solution", "unit": "g", "type": "number"}
-        ]
-      },
-      {
-        "id": "percent-wv",
-        "title": "Percent Weight/Volume",
-        "formula": "% w/v = (mass solute / volume solution) × 100",
-        "description": "Calculate weight/volume percentage concentration",
-        "inputs": [
-          {"id": "mass_solute", "label": "Mass of Solute", "unit": "g", "type": "number"},
-          {"id": "volume_solution", "label": "Volume of Solution", "unit": "mL", "type": "number"}
-        ]
-      },
-      {
-        "id": "percent-vv",
-        "title": "Percent Volume/Volume",
-        "formula": "% v/v = (volume solute / volume solution) × 100",
-        "description": "Calculate volume/volume percentage concentration",
-        "inputs": [
-          {"id": "volume_solute", "label": "Volume of Solute", "unit": "mL", "type": "number"},
-          {"id": "volume_solution", "label": "Volume of Solution", "unit": "mL", "type": "number"}
-        ]
-      },
-      {
-        "id": "ppm",
-        "title": "Parts Per Million (ppm)",
-        "formula": "ppm = (mass solute / mass solution) × 10⁶",
-        "description": "Calculate parts per million concentration",
-        "inputs": [
-          {"id": "mass_solute", "label": "Mass of Solute", "unit": "mg", "type": "number"},
-          {"id": "mass_solution", "label": "Mass of Solution", "unit": "kg", "type": "number"}
-        ]
-      },
-      {
-        "id": "molality",
-        "title": "Molality Calculation",
-        "formula": "m = moles solute / kg solvent",
-        "description": "Calculate molality from moles and solvent mass",
-        "inputs": [
-          {"id": "moles_solute", "label": "Moles of Solute", "unit": "mol", "type": "number"},
-          {"id": "kg_solvent", "label": "Kg of Solvent", "unit": "kg", "type": "number"}
+          {"id": "initial_concs", "label": "Initial Concentrations", "type": "text"},
+          {"id": "k_value", "label": "Equilibrium Constant (K)", "type": "number"},
+          {"id": "reaction_quotient", "label": "Reaction Quotient (Q)", "type": "number"}
         ]
       }
     ],
-    "acids-bases": [
+    "thermodynamics": [
       {
-        "id": "ph-calculation",
-        "title": "pH from [H⁺]",
-        "formula": "pH = -log₁₀[H⁺]",
-        "description": "Calculate pH from hydrogen ion concentration",
+        "id": "gibbs-energy",
+        "title": "Gibbs Free Energy",
+        "formula": "ΔG = ΔH - TΔS",
+        "description": "Calculate Gibbs free energy change",
         "inputs": [
-          {"id": "h_concentration", "label": "[H⁺] Concentration", "unit": "M", "type": "number"}
-        ]
-      },
-      {
-        "id": "h-concentration",
-        "title": "[H⁺] from pH",
-        "formula": "[H⁺] = 10⁻ᵖᴴ",
-        "description": "Calculate hydrogen ion concentration from pH",
-        "inputs": [
-          {"id": "ph", "label": "pH Value", "unit": "", "type": "number"}
-        ]
-      },
-      {
-        "id": "poh-calculation",
-        "title": "pOH Calculation",
-        "formula": "pOH = 14 - pH",
-        "description": "Calculate pOH from pH value",
-        "inputs": [
-          {"id": "ph", "label": "pH Value", "unit": "", "type": "number"}
-        ]
-      },
-      {
-        "id": "titration",
-        "title": "Acid-Base Titration",
-        "formula": "C₁V₁ = C₂V₂",
-        "description": "Calculate unknown concentration in titration",
-        "inputs": [
-          {"id": "c_acid", "label": "Acid Concentration", "unit": "M", "type": "number"},
-          {"id": "v_acid", "label": "Acid Volume", "unit": "mL", "type": "number"},
-          {"id": "v_base", "label": "Base Volume", "unit": "mL", "type": "number"}
+          {"id": "enthalpy", "label": "Enthalpy Change (ΔH)", "unit": "kJ/mol", "type": "number"},
+          {"id": "entropy", "label": "Entropy Change (ΔS)", "unit": "J/mol·K", "type": "number"},
+          {"id": "temperature", "label": "Temperature (T)", "unit": "K", "type": "number"}
         ]
       }
     ],
-    "redox": [
+    "kinetics": [
       {
-        "id": "cell-potential",
-        "title": "Cell Potential",
-        "formula": "E°cell = E°cathode - E°anode",
-        "description": "Calculate standard cell potential",
+        "id": "rate-law",
+        "title": "Rate Law Calculator",
+        "formula": "Rate = k[A]^m[B]^n",
+        "description": "Calculate reaction rate from concentrations",
         "inputs": [
-          {"id": "cathode_potential", "label": "Cathode Potential (E°)", "unit": "V", "type": "number"},
-          {"id": "anode_potential", "label": "Anode Potential (E°)", "unit": "V", "type": "number"}
-        ]
-      },
-      {
-        "id": "faraday-law",
-        "title": "Faraday's Law",
-        "formula": "Q = I × t",
-        "description": "Calculate charge and moles of electrons",
-        "inputs": [
-          {"id": "current", "label": "Current (I)", "unit": "A", "type": "number"},
-          {"id": "time", "label": "Time (t)", "unit": "s", "type": "number"}
-        ]
-      },
-      {
-        "id": "nernst-equation",
-        "title": "Nernst Equation",
-        "formula": "E = E° - (0.0592/n) × log(Q)",
-        "description": "Calculate cell potential under non-standard conditions",
-        "inputs": [
-          {"id": "standard_potential", "label": "Standard Potential (E°)", "unit": "V", "type": "number"},
-          {"id": "electrons", "label": "Number of electrons (n)", "unit": "", "type": "number"},
-          {"id": "reaction_quotient", "label": "Reaction Quotient (Q)", "unit": "", "type": "number"}
-        ]
-      }
-    ],
-    "thermochemistry": [
-      {
-        "id": "heat-capacity",
-        "title": "Heat Capacity",
-        "formula": "q = mcΔT",
-        "description": "Calculate heat transfer using specific heat capacity",
-        "inputs": [
-          {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
-          {"id": "specific_heat", "label": "Specific Heat (c)", "unit": "J/g°C", "type": "number"},
-          {"id": "temp_change", "label": "Temperature Change (ΔT)", "unit": "°C", "type": "number"}
-        ]
-      },
-      {
-        "id": "enthalpy-formation",
-        "title": "Enthalpy of Formation",
-        "formula": "ΔH°rxn = Σ ΔH°f(products) - Σ ΔH°f(reactants)",
-        "description": "Calculate reaction enthalpy from formation enthalpies",
-        "inputs": [
-          {"id": "products_enthalpy", "label": "Sum of Products ΔH°f", "unit": "kJ/mol", "type": "number"},
-          {"id": "reactants_enthalpy", "label": "Sum of Reactants ΔH°f", "unit": "kJ/mol", "type": "number"}
-        ]
-      },
-      {
-        "id": "bond-energy",
-        "title": "Bond Energy Calculation",
-        "formula": "ΔH = Bonds broken - Bonds formed",
-        "description": "Calculate enthalpy change from bond energies",
-        "inputs": [
-          {"id": "bonds_broken", "label": "Energy of Bonds Broken", "unit": "kJ/mol", "type": "number"},
-          {"id": "bonds_formed", "label": "Energy of Bonds Formed", "unit": "kJ/mol", "type": "number"}
-        ]
-      }
-    ],
-    "analytical": [
-      {
-        "id": "beer-lambert",
-        "title": "Beer-Lambert Law",
-        "formula": "A = εcl",
-        "description": "Calculate absorbance using Beer-Lambert law",
-        "inputs": [
-          {"id": "molar_absorptivity", "label": "Molar Absorptivity (ε)", "unit": "L/mol⋅cm", "type": "number"},
-          {"id": "concentration", "label": "Concentration (c)", "unit": "M", "type": "number"},
-          {"id": "path_length", "label": "Path Length (l)", "unit": "cm", "type": "number"}
-        ]
-      },
-      {
-        "id": "calibration-curve",
-        "title": "Calibration Curve",
-        "formula": "y = mx + b",
-        "description": "Calculate y-value from linear calibration curve",
-        "inputs": [
-          {"id": "slope", "label": "Slope (m)", "unit": "", "type": "number"},
-          {"id": "x_value", "label": "x-value", "unit": "", "type": "number"},
-          {"id": "y_intercept", "label": "y-intercept (b)", "unit": "", "type": "number"}
-        ]
-      }
-    ],
-    "organic": [
-      {
-        "id": "molecular-formula",
-        "title": "Molecular Formula",
-        "formula": "Molecular Formula = (Empirical Formula)ₙ",
-        "description": "Calculate molecular formula multiplier",
-        "inputs": [
-          {"id": "empirical_mass", "label": "Empirical Formula Mass", "unit": "g/mol", "type": "number"},
-          {"id": "molecular_mass", "label": "Molecular Mass", "unit": "g/mol", "type": "number"}
-        ]
-      },
-      {
-        "id": "percent-composition",
-        "title": "Percent Composition",
-        "formula": "% Element = (Mass of element / Total mass) × 100",
-        "description": "Calculate percentage composition of an element",
-        "inputs": [
-          {"id": "element_mass", "label": "Mass of Element", "unit": "g/mol", "type": "number"},
-          {"id": "total_mass", "label": "Total Molecular Mass", "unit": "g/mol", "type": "number"}
+          {"id": "rate_constant", "label": "Rate Constant (k)", "type": "number"},
+          {"id": "concentrations", "label": "Concentrations", "type": "text", "placeholder": "A:0.1,B:0.2"},
+          {"id": "orders", "label": "Reaction Orders", "type": "text", "placeholder": "m:1,n:2"}
         ]
       }
     ]
   },
-  "lookup_data": [
-    {
-      "term": "Avogadro's Number",
-      "formula": "6.022 × 10²³ particles/mol",
-      "description": "Number of particles in one mole"
+  "reference_data": {
+    "atomic_properties": [
+      {
+        "symbol": "H",
+        "name": "Hydrogen",
+        "atomic_number": 1,
+        "atomic_mass": 1.008,
+        "electron_configuration": "1s¹",
+        "electronegativity": 2.20,
+        "atomic_radius": 53,
+        "ionization_energy": 1312,
+        "electron_affinity": -73,
+        "oxidation_states": [-1, 1],
+        "group": 1,
+        "period": 1,
+        "block": "s",
+        "category": "Nonmetal",
+        "natural_state": "Gas",
+        "melting_point": 14.01,
+        "boiling_point": 20.28,
+        "density": 0.00008988,
+        "year_discovered": 1766
+      },
+      {
+        "symbol": "He",
+        "name": "Helium",
+        "atomic_number": 2,
+        "atomic_mass": 4.002602,
+        "electron_configuration": "1s²",
+        "electronegativity": null,
+        "atomic_radius": 31,
+        "ionization_energy": 2372.3,
+        "electron_affinity": 0,
+        "oxidation_states": [0],
+        "group": 18,
+        "period": 1,
+        "block": "s",
+        "category": "Noble Gas",
+        "natural_state": "Gas",
+        "melting_point": 0.95,
+        "boiling_point": 4.22,
+        "density": 0.0001785,
+        "year_discovered": 1895
+      }
+    ],
+    "molecular_properties": {
+      "common_compounds": [
+        {
+          "formula": "H2O",
+          "name": "Water",
+          "molar_mass": 18.015,
+          "density": 1.000,
+          "melting_point": 273.15,
+          "boiling_point": 373.15,
+          "solubility": "N/A",
+          "ph": 7.0,
+          "dipole_moment": 1.85,
+          "crystal_structure": "Hexagonal",
+          "critical_point": {
+            "temperature": 647,
+            "pressure": 22.064
+          }
+        }
+      ],
+      "bond_energies": [
+        {
+          "bond": "H-H",
+          "energy": 436,
+          "length": 74,
+          "type": "Single"
+        },
+        {
+          "bond": "C-C",
+          "energy": 348,
+          "length": 154,
+          "type": "Single"
+        },
+        {
+          "bond": "C=C",
+          "energy": 614,
+          "length": 134,
+          "type": "Double"
+        }
+      ]
     },
-    {
-      "term": "Ideal Gas Constant",
-      "formula": "R = 0.08206 L⋅atm/(mol⋅K)",
-      "description": "Gas constant for ideal gas law calculations"
+    "thermodynamic_data": {
+      "standard_enthalpies": [
+        {
+          "compound": "H2O(l)",
+          "formation": -285.8,
+          "combustion": "N/A",
+          "fusion": 6.01,
+          "vaporization": 40.7
+        },
+        {
+          "compound": "CO2(g)",
+          "formation": -393.5,
+          "combustion": "N/A",
+          "fusion": 9.02,
+          "vaporization": 25.2
+        }
+      ],
+      "entropy_values": [
+        {
+          "compound": "H2O(l)",
+          "standard_entropy": 69.91,
+          "temperature_dependence": "70 + 0.02T"
+        }
+      ]
     },
-    {
-      "term": "Standard Temperature and Pressure",
-      "formula": "STP: 0°C (273.15 K) and 1 atm",
-      "description": "Standard conditions for gas measurements"
+    "acid_base_data": {
+      "common_acids": [
+        {
+          "name": "Hydrochloric acid",
+          "formula": "HCl",
+          "ka": 1e7,
+          "pka": -7,
+          "conjugate_base": "Cl⁻",
+          "strength": "Strong"
+        },
+        {
+          "name": "Acetic acid",
+          "formula": "CH3COOH",
+          "ka": 1.8e-5,
+          "pka": 4.74,
+          "conjugate_base": "CH3COO⁻",
+          "strength": "Weak"
+        }
+      ],
+      "common_bases": [
+        {
+          "name": "Sodium hydroxide",
+          "formula": "NaOH",
+          "kb": 1e7,
+          "pkb": -7,
+          "conjugate_acid": "N/A",
+          "strength": "Strong"
+        }
+      ],
+      "buffer_solutions": [
+        {
+          "name": "Acetate buffer",
+          "components": ["CH3COOH", "CH3COONa"],
+          "ph_range": [4.3, 5.3],
+          "optimal_ph": 4.8
+        }
+      ]
     },
-    {
-      "term": "Molar Volume at STP",
-      "formula": "22.4 L/mol",
-      "description": "Volume occupied by one mole of gas at STP"
+    "electrochemistry": {
+      "standard_reduction_potentials": [
+        {
+          "half_reaction": "2H⁺ + 2e⁻ → H₂",
+          "e0": 0.00,
+          "conditions": "Standard"
+        },
+        {
+          "half_reaction": "Cu²⁺ + 2e⁻ → Cu",
+          "e0": 0.34,
+          "conditions": "Standard"
+        }
+      ],
+      "nernst_equation_constants": {
+        "R": 8.314,
+        "F": 96485,
+        "temperature_correction": "0.0592/n at 298K"
+      }
     },
-    {
-      "term": "Faraday Constant",
-      "formula": "F = 96,485 C/mol",
-      "description": "Charge of one mole of electrons"
+    "spectroscopy": {
+      "ir_frequencies": [
+        {
+          "bond": "O-H stretch",
+          "frequency_range": [3200, 3600],
+          "intensity": "Strong",
+          "characteristics": "Broad"
+        },
+        {
+          "bond": "C=O stretch",
+          "frequency_range": [1670, 1780],
+          "intensity": "Strong",
+          "characteristics": "Sharp"
+        }
+      ],
+      "nmr_chemical_shifts": [
+        {
+          "group": "R-CH3",
+          "shift_range": [0.7, 1.3],
+          "multiplicity": "Singlet/Doublet/Triplet",
+          "solvent": "CDCl3"
+        }
+      ]
     },
-    {
-      "term": "Water Ion Product",
-      "formula": "Kw = 1.0 × 10⁻¹⁴ at 25°C",
-      "description": "Ion product constant of water"
+    "organic_chemistry": {
+      "functional_groups": [
+        {
+          "name": "Alcohol",
+          "formula": "R-OH",
+          "properties": {
+            "reactivity": "Nucleophilic",
+            "acidity": "Weak acid",
+            "common_reactions": ["Oxidation", "Dehydration"]
+          }
+        },
+        {
+          "name": "Carbonyl",
+          "formula": "R-C=O",
+          "properties": {
+            "reactivity": "Electrophilic",
+            "acidity": "N/A",
+            "common_reactions": ["Nucleophilic addition", "Reduction"]
+          }
+        }
+      ],
+      "reaction_mechanisms": [
+        {
+          "type": "SN2",
+          "description": "Nucleophilic substitution",
+          "rate_law": "Rate = k[Substrate][Nucleophile]",
+          "stereochemistry": "Inversion",
+          "example": "CH3Br + OH⁻ → CH3OH + Br⁻"
+        }
+      ]
     },
-    {
-      "term": "pH + pOH",
-      "formula": "pH + pOH = 14 at 25°C",
-      "description": "Relationship between pH and pOH"
+    "analytical_chemistry": {
+      "common_indicators": [
+        {
+          "name": "Phenolphthalein",
+          "ph_range": [8.2, 10.0],
+          "color_change": "Colorless to pink",
+          "pka": 9.4
+        },
+        {
+          "name": "Methyl orange",
+          "ph_range": [3.1, 4.4],
+          "color_change": "Red to yellow",
+          "pka": 3.7
+        }
+      ],
+      "titration_curves": [
+        {
+          "type": "Strong acid-Strong base",
+          "equivalence_point": 7,
+          "buffer_region": "None",
+          "indicator_choice": ["Phenolphthalein", "Methyl orange"]
+        }
+      ]
     },
-    {
-      "term": "Planck's Constant",
-      "formula": "h = 6.626 × 10⁻³⁴ J⋅s",
-      "description": "Fundamental constant for quantum mechanics"
-    },
-    {
-      "term": "Speed of Light",
-      "formula": "c = 3.00 × 10⁸ m/s",
-      "description": "Speed of light in vacuum"
-    },
-    {
-      "term": "Atomic Mass Unit",
-      "formula": "1 amu = 1.66054 × 10⁻²⁷ kg",
-      "description": "Atomic mass unit conversion"
-    },
-    {
-      "term": "Boiling Point of Water",
-      "formula": "100°C = 373.15 K at 1 atm",
-      "description": "Standard boiling point of water"
-    },
-    {
-      "term": "Freezing Point of Water",
-      "formula": "0°C = 273.15 K at 1 atm",
-      "description": "Standard freezing point of water"
-    },
-    {
-      "term": "Specific Heat of Water",
-      "formula": "4.18 J/(g⋅°C)",
-      "description": "Specific heat capacity of liquid water"
-    },
-    {
-      "term": "Standard Pressure",
-      "formula": "1 atm = 101.325 kPa = 760 mmHg",
-      "description": "Standard atmospheric pressure conversions"
-    },
-    {
-      "term": "Universal Gas Constant",
-      "formula": "R = 8.314 J/(mol⋅K)",
-      "description": "Universal gas constant in SI units"
+    "quantum_chemistry": {
+      "atomic_orbitals": [
+        {
+          "orbital": "1s",
+          "energy_level": 1,
+          "max_electrons": 2,
+          "shape": "Spherical",
+          "quantum_numbers": {
+            "n": 1,
+            "l": 0,
+            "ml": [0],
+            "ms": [-1/2, 1/2]
+          }
+        }
+      ],
+      "molecular_orbitals": [
+        {
+          "molecule": "H2",
+          "orbital_type": "Bonding sigma",
+          "energy": "Lower than atomic",
+          "electron_count": 2
+        }
+      ]
     }
-  ]
+  },
+  "laboratory_data": {
+    "safety": {
+      "hazard_classifications": [
+        {
+          "type": "Flammable",
+          "symbol": "🔥",
+          "precautions": ["Keep away from heat", "No smoking"],
+          "example_compounds": ["Ethanol", "Acetone"]
+        }
+      ],
+      "ppe_requirements": [
+        {
+          "equipment": "Safety goggles",
+          "when_required": "All lab work",
+          "specifications": "Impact resistant, chemical splash protection"
+        }
+      ]
+    },
+    "techniques": {
+      "titration": {
+        "steps": [
+          "Clean burette",
+          "Rinse with titrant",
+          "Fill burette",
+          "Add indicator to analyte",
+          "Titrate to endpoint"
+        ],
+        "common_errors": [
+          "Parallax error",
+          "Overrunning endpoint",
+          "Dirty glassware"
+        ]
+      },
+      "distillation": {
+        "types": [
+          {
+            "name": "Simple distillation",
+            "suitable_for": "Pure liquids",
+            "temperature_range": "Up to 200°C",
+            "equipment": ["Distillation flask", "Condenser", "Thermometer"]
+          }
+        ]
+      }
+    },
+    "equipment": {
+      "glassware": [
+        {
+          "name": "Volumetric flask",
+          "uses": ["Precise dilution", "Standard solution preparation"],
+          "accuracy": "±0.1 mL",
+          "calibration": "To contain (TC)"
+        }
+      ],
+      "instruments": [
+        {
+          "name": "pH meter",
+          "range": [0, 14],
+          "precision": "±0.01",
+          "calibration": "2 or 3 point",
+          "maintenance": ["Store electrode wet", "Regular calibration"]
+        }
+      ]
+    }
+  },
+  "unit_conversions": {
+    "temperature": [
+      {
+        "from": "Celsius",
+        "to": "Kelvin",
+        "formula": "K = °C + 273.15",
+        "example": "25°C = 298.15K"
+      },
+      {
+        "from": "Celsius",
+        "to": "Fahrenheit",
+        "formula": "°F = (°C × 9/5) + 32",
+        "example": "100°C = 212°F"
+      }
+    ],
+    "pressure": [
+      {
+        "from": "atm",
+        "to": "kPa",
+        "formula": "kPa = atm × 101.325",
+        "example": "1 atm = 101.325 kPa"
+      }
+    ],
+    "concentration": [
+      {
+        "from": "molarity",
+        "to": "ppm",
+        "formula": "ppm = M × (molar mass × 1000)",
+        "example": "1 M NaCl = 58,440 ppm"
+      }
+    ]
+  },
+  "constants": {
+    "fundamental": [
+      {
+        "name": "Avogadro's Number",
+        "symbol": "NA",
+        "value": 6.02214076e23,
+        "unit": "mol⁻¹",
+        "uncertainty": "0.00000001e23"
+      },
+      {
+        "name": "Gas Constant",
+        "symbol": "R",
+        "value": 8.31446261815324,
+        "unit": "J⋅mol⁻¹⋅K⁻¹",
+        "uncertainty": "0.00000000000001"
+      }
+    ],
+    "derived": [
+      {
+        "name": "Faraday Constant",
+        "symbol": "F",
+        "value": 96485.33212,
+        "unit": "C⋅mol⁻¹",
+        "derivation": "NA × e"
+      }
+    ]
+  }
 }
-
-
