@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEMI - Advanced Chemistry Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-atom"></i>
+                <h1>CHEMI</h1>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search calculations..." id="searchInput">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="category-section">
+                <div class="category-title">Categories</div>
+                <div class="category-item active" data-category="all">
+                    <span class="category-text">All Calculations</span>
+                    <span class="calculation-count" id="allCount">0</span>
+                </div>
+                <div class="category-item" data-category="favorites">
+                    <span class="category-text">★ Favorites</span>
+                    <span class="calculation-count" id="favCount">0</span>
+                </div>
+            </div>
+
+            <div class="category-section">
+                <div class="category-title">Chemistry Topics</div>
+                <div class="category-item" data-category="stoichiometry">
+                    <span class="category-text">Stoichiometry</span>
+                    <span class="calculation-count">8</span>
+                </div>
+                <div class="category-item" data-category="solutions">
+                    <span class="category-text">Solution Chemistry</span>
+                    <span class="calculation-count">6</span>
+                </div>
+                <div class="category-item" data-category="acids-bases">
+                    <span class="category-text">Acids & Bases</span>
+                    <span class="calculation-count">4</span>
+                </div>
+                <div class="category-item" data-category="redox">
+                    <span class="category-text">Redox & Electrochemistry</span>
+                    <span class="calculation-count">3</span>
+                </div>
+                <div class="category-item" data-category="thermochemistry">
+                    <span class="category-text">Thermochemistry</span>
+                    <span class="calculation-count">3</span>
+                </div>
+                <div class="category-item" data-category="analytical">
+                    <span class="category-text">Analytical Chemistry</span>
+                    <span class="calculation-count">2</span>
+                </div>
+                <div class="category-item" data-category="organic">
+                    <span class="category-text">Organic Chemistry</span>
+                    <span class="calculation-count">2</span>
+                </div>
+            </div>
+
+            <!-- Lookup Section -->
+            <div class="category-section">
+                <div class="category-title">Quick Lookup</div>
+                <div class="lookup-container">
+                    <input type="text" class="lookup-input" placeholder="Find formula or concept..." id="lookupInput">
+                    <div class="lookup-results" id="lookupResults"></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-top">
+                    <div>
+                        <h2 id="categoryTitle">All Calculations</h2>
+                        <p id="categoryDescription">Complete collection of chemistry calculations for high school students</p>
+                    </div>
+                    <button class="clear-btn" onclick="clearAllCalculations()">
+                        <i class="fas fa-eraser"></i>
+                        Clear All
+                    </button>
+                </div>
+            </header>
+
+            <div class="calculators-grid" id="calculatorsGrid">
+                <!-- Calculators will be dynamically generated here -->
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No calculations found</h3>
+                <p>Try adjusting your search or browse different categories</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="calculationengine.js"></script>
+</body>
+</html>
