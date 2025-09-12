@@ -1,3 +1,4 @@
+fix up this fire so its correct formatted and well functional 
 // CHEMI - Advanced Chemistry Calculator Engine
 class ChemiCalculator {
     constructor() {
@@ -486,7 +487,147 @@ class ChemiCalculator {
             'ClO4': '-1', 'ClO3': '-1', 'ClO2': '-1', 'ClO': '-1',
             'MnO4': '-1', 'CrO4': '-2', 'Cr2O7': '-2'
         };
+        class EquationBalancer {
+    constructor() {
+        this.elements = new Map();
+        this.reactants = [];
+        this.products = [];
+        this.matrix = [];
+        this.coefficients = [];
+    }
 
+    parseFormula(formula) {
+        const result = new Map();
+        const regex = /([A-Z][a-z]?)(\d*)/g;
+        let match;
+        
+        while ((match = regex.exec(formula)) !== null) {
+            const element = match[1];
+            const count = match[2] ? parseInt(match[2]) : 1;
+            result.set(element, (result.get(element) || 0) + count);
+        }
+        
+        return result;
+    }
+
+    parseEquation(equation) {
+        const [reactantsStr, productsStr] = equation.split('→').map(s => s.trim());
+        this.reactants = reactantsStr.split('+').map(r => r.trim());
+        this.products = productsStr.split('+').map(p => p.trim());
+        
+        // Reset elements map
+        this.elements.clear();
+        
+        // Process reactants
+        this.reactants.forEach(reactant => {
+            const elementMap = this.parseFormula(reactant);
+            elementMap.forEach((_, element) => this.elements.set(element, true));
+        });
+        
+        // Process products
+        this.products.forEach(product => {
+            const elementMap = this.parseFormula(product);
+            elementMap.forEach((_, element) => this.elements.set(element, true));
+        });
+    }
+
+    buildMatrix() {
+        const numElements = this.elements.size;
+        const numCompounds = this.reactants.length + this.products.length;
+        this.matrix = Array(numElements).fill().map(() => Array(numCompounds).fill(0));
+        
+        const elements = Array.from(this.elements.keys());
+        
+        // Fill matrix for reactants (positive values)
+        this.reactants.forEach((reactant, col) => {
+            const elementMap = this.parseFormula(reactant);
+            elements.forEach((element, row) => {
+                this.matrix[row][col] = elementMap.get(element) || 0;
+            });
+        });
+        
+        // Fill matrix for products (negative values)
+        this.products.forEach((product, idx) => {
+            const col = idx + this.reactants.length;
+            const elementMap = this.parseFormula(product);
+            elements.forEach((element, row) => {
+                this.matrix[row][col] = -(elementMap.get(element) || 0);
+            });
+        });
+    }
+
+    solve() {
+        // Gaussian elimination
+        const rows = this.matrix.length;
+        const cols = this.matrix[0].length;
+        
+        for (let i = 0; i < rows; i++) {
+            // Find pivot
+            let pivot = this.matrix[i][i];
+            let pivotRow = i;
+            
+            for (let j = i + 1; j < rows; j++) {
+                if (Math.abs(this.matrix[j][i]) > Math.abs(pivot)) {
+                    pivot = this.matrix[j][i];
+                    pivotRow = j;
+                }
+            }
+            
+            // Swap rows if needed
+            if (pivotRow !== i) {
+                [this.matrix[i], this.matrix[pivotRow]] = [this.matrix[pivotRow], this.matrix[i]];
+            }
+            
+            // Eliminate column
+            for (let j = 0; j < rows; j++) {
+                if (i !== j) {
+                    const factor = this.matrix[j][i] / this.matrix[i][i];
+                    for (let k = i; k < cols; k++) {
+                        this.matrix[j][k] -= factor * this.matrix[i][k];
+                    }
+                }
+            }
+        }
+        
+        // Back substitution
+        this.coefficients = Array(cols).fill(1);
+        for (let i = 0; i < rows; i++) {
+            let sum = 0;
+            for (let j = 0; j < cols; j++) {
+                if (j !== i) {
+                    sum += this.matrix[i][j] * this.coefficients[j];
+                }
+            }
+            this.coefficients[i] = -sum / this.matrix[i][i];
+        }
+        
+        // Convert to smallest whole numbers
+        const gcd = this.findGCD(this.coefficients.map(Math.abs));
+        this.coefficients = this.coefficients.map(c => Math.round(c / gcd));
+    }
+
+    findGCD(numbers) {
+        const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+        return numbers.reduce((a, b) => gcd(a, b));
+    }
+
+    balance(equation) {
+        this.parseEquation(equation);
+        this.buildMatrix();
+        this.solve();
+        
+        // Build balanced equation string
+        const balancedReactants = this.reactants.map((r, i) => 
+            `${this.coefficients[i] === 1 ? '' : this.coefficients[i]}${r}`
+        ).join(' + ');
+        
+        const balancedProducts = this.products.map((p, i) => 
+            `${this.coefficients[i + this.reactants.length] === 1 ? '' : this.coefficients[i + this.reactants.length]}${p}`
+        ).join(' + ');
+        
+        return `${balancedReactants} → ${balancedProducts}`;
+    }
+}
         // Solubility rules
         const solubilityRules = (compound) => {
             const comp = compound.toUpperCase();
