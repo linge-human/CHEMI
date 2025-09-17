@@ -18,96 +18,201 @@
                 <i class="fas fa-atom"></i>
                 <h1>CHEMI</h1>
             </div>
+            <div class="copyright-notice">
+                <a href="#" onclick="showCopyrightModal()" class="copyright-link">© 2025 Linge</a>
+            </div>
             
-            <!-- Quick Lookup Section at top -->
-            <div class="category-section">
-                <div class="category-title">Quick Lookup</div>
-                <div class="lookup-container">
-                    <input type="text" class="lookup-input" placeholder="Search formulas, constants..." id="lookupInput">
-                    <div class="lookup-results" id="lookupResults"></div>
+            <!-- Quick Search & Tools -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search" id="quickSearch">
+                    <i class="fas fa-search search-icon"></i>
                 </div>
+                <div class="search-results" id="searchResults"></div>
             </div>
 
-            <!-- Favorites -->
-            <div class="category-section">
-                <div class="category-title">Favorites</div>
-                <div class="category-item" data-category="favorites">
-                    <i class="fas fa-star"></i>
-                    <span class="category-text">Favorite Calculations</span>
-                    <span class="calculation-count" id="favCount">0</span>
+            <!-- VCE Chemistry Calculators by Study Design -->
+            <div class="calculator-categories">
+                <div class="category-header">
+                    <h3>VCE Chemistry</h3>
+                    <span class="category-subtitle">Select your unit of study</span>
                 </div>
-                <div id="favoritesList" class="calculation-list"></div>
-            </div>
 
-            <!-- Categories -->
-            <div class="category-section">
-                <div class="category-title">Categories</div>
-                
-                <div class="category-item" data-category="stoichiometry">
-                    <i class="fas fa-balance-scale"></i>
-                    <span class="category-text">Stoichiometry</span>
-                    <span class="calculation-count">9</span>
+                <!-- Unit 1: Foundation Chemistry -->
+                <div class="unit-section" id="unit1">
+                    <div class="unit-header" onclick="toggleUnit('unit1')">
+                        <h4><span class="unit-badge">Unit 1</span> Foundation Chemistry</h4>
+                        <i class="fas fa-chevron-down unit-chevron"></i>
+                    </div>
+                    <div class="unit-content" style="display: none;">
+                        <span class="unit-subtitle">AoS 2: Quantitative Chemistry</span>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="addQuickTool('molar-mass')" data-tooltip="Calculate molecular mass from formula">
+                                <i class="fas fa-calculator"></i>
+                                <span class="calc-name">Molar Mass</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('mass-moles')" data-tooltip="Convert between mass and moles">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span class="calc-name">Mass ↔ Moles</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('percent-yield')" data-tooltip="Calculate reaction efficiency">
+                                <i class="fas fa-percentage"></i>
+                                <span class="calc-name">% Yield</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('ideal-gas')" data-tooltip="PV=nRT calculations">
+                                <i class="fas fa-wind"></i>
+                                <span class="calc-name">Gas Laws</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="stoichiometryList" class="calculation-list"></div>
 
-                <div class="category-item" data-category="solutions">
-                    <i class="fas fa-flask"></i>
-                    <span class="category-text">Solutions</span>
-                    <span class="calculation-count">6</span>
+                <!-- Unit 2: Molecular Structure -->
+                <div class="unit-section" id="unit2">
+                    <div class="unit-header" onclick="toggleUnit('unit2')">
+                        <h4><span class="unit-badge">Unit 2</span> Molecular Structure</h4>
+                        <i class="fas fa-chevron-down unit-chevron"></i>
+                    </div>
+                    <div class="unit-content" style="display: none;">
+                        <span class="unit-subtitle">AoS 1: Bonding & Structure</span>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="addQuickTool('temperature')" data-tooltip="Convert °C ↔ K">
+                                <i class="fas fa-thermometer-half"></i>
+                                <span class="calc-name">Temperature</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('heat-capacity')" data-tooltip="q = mcΔT calculations">
+                                <i class="fas fa-fire"></i>
+                                <span class="calc-name">Heat Energy</span>
+                            </button>
+                            <button class="calc-btn disabled" data-tooltip="Coming soon">
+                                <i class="fas fa-atom"></i>
+                                <span class="calc-name">Bond Energy</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="solutionsList" class="calculation-list"></div>
 
-                <div class="category-item" data-category="acids-bases">
-                    <i class="fas fa-tint"></i>
-                    <span class="category-text">Acids & Bases</span>
-                    <span class="calculation-count">4</span>
+                <!-- Unit 3: Chemical Analysis -->
+                <div class="unit-section" id="unit3">
+                    <div class="unit-header" onclick="toggleUnit('unit3')">
+                        <h4><span class="unit-badge">Unit 3</span> Chemical Analysis</h4>
+                        <i class="fas fa-chevron-down unit-chevron"></i>
+                    </div>
+                    <div class="unit-content" style="display: none;">
+                        <span class="unit-subtitle">AoS 1: Solutions & Acids/Bases</span>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="addCalculatorByType('molarity')" data-tooltip="Calculate solution concentration">
+                                <i class="fas fa-flask"></i>
+                                <span class="calc-name">Molarity</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('dilution')" data-tooltip="C₁V₁ = C₂V₂ calculations">
+                                <i class="fas fa-tint"></i>
+                                <span class="calc-name">Dilution</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('ph-calculation')" data-tooltip="Calculate pH from [H⁺]">
+                                <i class="fas fa-vial"></i>
+                                <span class="calc-name">pH Calculation</span>
+                            </button>
+                            <button class="calc-btn" onclick="addCalculatorByType('h-concentration')" data-tooltip="Calculate [H⁺] from pH">
+                                <i class="fas fa-microscope"></i>
+                                <span class="calc-name">[H⁺] from pH</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="acids-basesList" class="calculation-list"></div>
 
-                <div class="category-item" data-category="redox">
-                    <i class="fas fa-bolt"></i>
-                    <span class="category-text">Redox & Electrochemistry</span>
-                    <span class="calculation-count">3</span>
+                <!-- Unit 4: Industrial Chemistry -->
+                <div class="unit-section" id="unit4">
+                    <div class="unit-header" onclick="toggleUnit('unit4')">
+                        <h4><span class="unit-badge">Unit 4</span> Industrial Chemistry</h4>
+                        <i class="fas fa-chevron-down unit-chevron"></i>
+                    </div>
+                    <div class="unit-content" style="display: none;">
+                        <span class="unit-subtitle">AoS 1: Industrial Processes</span>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="addCalculatorByType('limiting-reagent')" data-tooltip="Find limiting reagent in reactions">
+                                <i class="fas fa-balance-scale"></i>
+                                <span class="calc-name">Limiting Reagent</span>
+                            </button>
+                            <button class="calc-btn disabled" data-tooltip="Coming soon">
+                                <i class="fas fa-arrows-alt-h"></i>
+                                <span class="calc-name">Equilibrium</span>
+                            </button>
+                            <button class="calc-btn disabled" data-tooltip="Coming soon">
+                                <i class="fas fa-bolt"></i>
+                                <span class="calc-name">Electrochemistry</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="redoxList" class="calculation-list"></div>
 
-                <div class="category-item" data-category="thermochemistry">
-                    <i class="fas fa-thermometer-half"></i>
-                    <span class="category-text">Thermochemistry</span>
-                    <span class="calculation-count">3</span>
+                <!-- Tools & Reference -->
+                <div class="unit-section" id="tools">
+                    <div class="unit-header" onclick="toggleUnit('tools')">
+                        <h4><span class="tool-badge">Tools</span> Reference & Lookup</h4>
+                        <i class="fas fa-chevron-down unit-chevron"></i>
+                    </div>
+                    <div class="unit-content" style="display: none;">
+                        <span class="unit-subtitle">Quick reference for all units</span>
+                        <div class="calc-buttons">
+                            <button class="calc-btn" onclick="addQuickTool('ion-charge')" data-tooltip="Find ion charges and names">
+                                <i class="fas fa-search"></i>
+                                <span class="calc-name">Ion Lookup</span>
+                            </button>
+                            <button class="calc-btn" onclick="addQuickTool('molar-mass')" data-tooltip="Calculate molecular mass from formula">
+                                <i class="fas fa-calculator"></i>
+                                <span class="calc-name">Molar Mass</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div id="thermochemistryList" class="calculation-list"></div>
 
-                <div class="category-item" data-category="analytical">
-                    <i class="fas fa-microscope"></i>
-                    <span class="category-text">Analytical Chemistry</span>
-                    <span class="calculation-count">2</span>
+                <!-- Show All Button -->
+                <div class="show-all-section">
+                    <button class="show-all-btn" onclick="toggleAllUnits()">
+                        <i class="fas fa-list"></i>
+                        <span id="showAllText">Show All Calculators</span>
+                    </button>
                 </div>
-                <div id="analyticalList" class="calculation-list"></div>
-
-                <div class="category-item" data-category="organic">
-                    <i class="fas fa-molecular-formula"></i>
-                    <span class="category-text">Organic Chemistry</span>
-                    <span class="calculation-count">2</span>
-                </div>
-                <div id="organicList" class="calculation-list"></div>
-
-                <div class="category-item" data-category="toolkit">
-                    <i class="fas fa-tools"></i>
-                    <span class="category-text">Toolkit</span>
-                    <span class="calculation-count">4</span>
-                </div>
-                <div id="toolkitList" class="calculation-list"></div>
             </div>
         </aside>
 
         <main class="main-content">
             <div class="workspace-header">
-                <h2 class="workspace-title">Chemistry Workspace</h2>
-                <button class="clear-all-btn" id="clearAllBtn">
-                    <i class="fas fa-trash"></i>
-                    Clear All
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
                 </button>
+                <h2 class="workspace-title">Chemistry Workspace</h2>
+                <div class="workspace-controls">
+                    <div class="mode-selector">
+                        <button class="mode-btn active" data-mode="normal" id="normalMode">
+                            <i class="fas fa-calculator"></i>
+                            <span>Calculator</span>
+                        </button>
+                        <button class="mode-btn" data-mode="study" id="studyMode">
+                            <i class="fas fa-book"></i>
+                            <span>Study Guide</span>
+                        </button>
+                        <button class="mode-btn" data-mode="practice" id="practiceMode">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Practice</span>
+                        </button>
+                    </div>
+                    <button class="clear-all-btn" id="clearAllBtn">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Minimized Calculators Bar -->
+            <div class="minimized-calculators" id="minimizedCalculators" style="display: none;">
+                <div class="minimized-header">
+                    <h3><i class="fas fa-window-minimize"></i> Minimized Calculators</h3>
+                </div>
+                <div class="minimized-buttons" id="minimizedButtons">
+                    <!-- Minimized calculator buttons will appear here -->
+                </div>
             </div>
 
             <div class="workspace" id="workspace">
@@ -121,6 +226,9 @@
             </div>
         </main>
     </div>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <script src="script.js"></script>
 </body>
