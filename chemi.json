@@ -1,0 +1,779 @@
+{
+  "calculations": {
+    "stoichiometry": [
+      {
+        "id": "moles-mass",
+        "title": "Moles to Mass",
+        "formula": "m = n × M",
+        "description": "Calculate mass from moles and molar mass",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+        "inputs": [
+          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
+          {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "moles * molar_mass",
+          "result_unit": "g",
+          "result_label": "Mass"
+        },
+        "examples": [
+          {
+            "problem": "Calculate the mass of 0.500 mol of NaCl (molar mass = 58.4 g/mol).",
+            "solution": "m = n × M = 0.500 mol × 58.4 g/mol = 29.2 g",
+            "answer": "29.2 g"
+          }
+        ],
+        "study_tips": {
+          "concept": "This calculation converts moles (from stoichiometric calculations) back to mass (what you can actually weigh out in the laboratory).",
+          "key_points": [
+            "Multiply moles by molar mass to get mass",
+            "Essential for determining theoretical and actual yields",
+            "Used when preparing specific amounts of substances"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Stoichiometric calculations and limiting reagents",
+            "Unit 3 AoS 1: Quantitative analysis and solution preparation",
+            "Unit 4 AoS 1: Yield calculations in industrial processes"
+          ],
+          "common_errors": [
+            "Dividing instead of multiplying (confusing with mass to moles)",
+            "Using atomic mass instead of molar mass for compounds",
+            "Forgetting significant figures based on given data"
+          ],
+          "extensions": [
+            "How does this relate to percent yield calculations?",
+            "What if you needed to account for hydrated salts?",
+            "How would you scale this up for industrial production?"
+          ]
+        }
+      },
+      {
+        "id": "mass-moles",
+        "title": "Mass to Moles",
+        "formula": "n = m / M",
+        "description": "Calculate moles from mass and molar mass",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+        "inputs": [
+          {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
+          {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "mass / molar_mass",
+          "result_unit": "mol",
+          "result_label": "Amount of substance"
+        },
+        "examples": [
+          {
+            "problem": "Calculate the number of moles in 25.0 g of CaCO₃ (molar mass = 100.1 g/mol).",
+            "solution": "n = m / M = 25.0 g / 100.1 g/mol = 0.250 mol",
+            "answer": "0.250 mol"
+          }
+        ],
+        "study_tips": {
+          "concept": "The mole is the fundamental unit for measuring amounts of substances in chemistry. This calculation converts mass (what you can weigh) to moles (what participates in reactions).",
+          "key_points": [
+            "Always use the correct molar mass from the periodic table",
+            "Check units: mass in grams, molar mass in g/mol, result in mol",
+            "The mole ratio determines stoichiometric relationships in reactions"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Foundation for all stoichiometric calculations",
+            "Unit 3 AoS 1: Essential for solution preparation and analysis",
+            "Unit 4 AoS 1: Used in equilibrium and acid-base calculations"
+          ],
+          "common_errors": [
+            "Using atomic mass instead of molar mass for compounds",
+            "Forgetting to convert between g and kg when needed",
+            "Confusing mass with weight (mass is constant, weight varies)"
+          ],
+          "extensions": [
+            "How would you calculate moles if given the volume and density?",
+            "What's the relationship between moles and Avogadro's number?",
+            "How does this calculation connect to chemical equation balancing?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "How many moles are present in 58.4 g of sodium chloride (NaCl)? The molar mass of NaCl is 58.4 g/mol.",
+            "inputs": {"mass": 58.4, "molar_mass": 58.4},
+            "expected_result": 1.0,
+            "follow_up": "Perfect! This represents exactly one mole of NaCl, which contains 6.022 × 10²³ formula units."
+          },
+          {
+            "question": "A student has 12.5 g of calcium carbonate (CaCO₃). If the molar mass is 100.1 g/mol, how many moles is this?",
+            "inputs": {"mass": 12.5, "molar_mass": 100.1},
+            "expected_result": 0.125,
+            "follow_up": "This is exactly 1/8 of a mole. In stoichiometry problems, you'll often work with fractional moles like this."
+          }
+        ]
+      },
+      {
+        "id": "molarity",
+        "title": "Molarity Calculation",
+        "formula": "C = n / V",
+        "description": "Calculate molarity from moles and volume",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+        "inputs": [
+          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
+          {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "moles / volume",
+          "result_unit": "M",
+          "result_label": "Molarity"
+        },
+        "examples": [
+          {
+            "problem": "Calculate the molarity of a solution containing 0.5 mol of NaCl dissolved in 2.0 L of solution.",
+            "solution": "C = n / V = 0.5 mol / 2.0 L = 0.25 M",
+            "answer": "0.25 M"
+          }
+        ],
+        "study_tips": {
+          "concept": "Molarity measures the concentration of a solution in moles of solute per litre of solution. It's temperature dependent because volume changes with temperature.",
+          "key_points": [
+            "Always use volume of final solution, not just solvent",
+            "Convert mL to L by dividing by 1000",
+            "Molarity is different from molality (mol/kg solvent)"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Use molarity in stoichiometric calculations",
+            "Unit 3 AoS 1: Connect to acid-base titrations and buffer solutions"
+          ],
+          "common_errors": [
+            "Using volume of solvent instead of total solution volume",
+            "Forgetting to convert between mL and L",
+            "Confusing molarity (M) with molality (m)"
+          ],
+          "extensions": [
+            "How would you prepare 500 mL of 0.1 M NaCl solution?",
+            "Compare molarity vs molality - when would you use each?",
+            "How does temperature affect molarity measurements?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "Calculate the molarity of a solution containing 2.5 mol of glucose dissolved in 5.0 L of solution.",
+            "inputs": {"moles": 2.5, "volume": 5.0},
+            "expected_result": 0.5,
+            "follow_up": "This solution is less concentrated than seawater (~0.6 M). What would happen if you doubled the amount of glucose?"
+          },
+          {
+            "question": "A student dissolves 0.8 mol of sodium chloride in enough water to make 400 mL of solution. Calculate the molarity.",
+            "inputs": {"moles": 0.8, "volume": 0.4},
+            "expected_result": 2.0,
+            "follow_up": "Remember to convert mL to L! This is a common source of errors in molarity calculations."
+          }
+        ]
+      },
+      {
+        "id": "ideal-gas",
+        "title": "Ideal Gas Law (PV=nRT)",
+        "formula": "PV = nRT",
+        "description": "Solve for any variable in the ideal gas law given the other three",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+        "inputs": [
+          {"id": "pressure", "label": "Pressure (P)", "unit": "atm", "type": "number", "optional": true},
+          {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number", "optional": true},
+          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number", "optional": true},
+          {"id": "temperature", "label": "Temperature (T)", "unit": "K", "type": "number", "optional": true}
+        ],
+        "calculation": {
+          "type": "solve_for_missing",
+          "R_constant": 0.08206
+        },
+        "examples": [
+          {
+            "problem": "Find the pressure when n = 2.0 mol, T = 300 K, V = 10.0 L",
+            "solution": "PV = nRT → P = nRT/V = (2.0)(0.08206)(300)/10.0 = 4.92 atm",
+            "answer": "4.92 atm"
+          },
+          {
+            "problem": "Find the volume when P = 1.5 atm, n = 0.5 mol, T = 273 K",
+            "solution": "PV = nRT → V = nRT/P = (0.5)(0.08206)(273)/1.5 = 7.46 L",
+            "answer": "7.46 L"
+          }
+        ],
+        "study_tips": {
+          "concept": "The ideal gas law shows the relationship between all four gas properties. In problems, you typically know three variables and solve for the fourth.",
+          "key_points": [
+            "Leave one field empty - the calculator will solve for it",
+            "Temperature must always be in Kelvin (K = °C + 273.15)",
+            "R = 0.08206 L·atm/(mol·K) when using atm and L",
+            "All four variables are interconnected"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Gas stoichiometry and molar volume",
+            "Unit 3 AoS 1: Gas behavior in reactions and equilibrium"
+          ],
+          "common_errors": [
+            "Providing all four values instead of leaving one blank",
+            "Using Celsius instead of Kelvin for temperature",
+            "Mixing pressure units (atm vs kPa vs mmHg)",
+            "Forgetting that this assumes ideal gas behavior"
+          ],
+          "extensions": [
+            "What conditions make gases behave non-ideally?",
+            "How does this relate to Avogadro's law and Charles's law?",
+            "Can you derive the other gas laws from PV=nRT?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "A balloon contains 1.5 mol of helium at 22°C and occupies 8.0 L. Use the calculator to find the pressure inside the balloon.",
+            "hint": "Remember to convert temperature to Kelvin (22°C + 273.15 = 295.15 K). Leave the pressure field empty.",
+            "inputs": {"volume": 8.0, "moles": 1.5, "temperature": 295.15},
+            "expected_result": 4.52,
+            "follow_up": "This pressure is about 4.5 times atmospheric pressure! What would happen if you heated this balloon?"
+          },
+          {
+            "question": "At what temperature would 0.75 mol of oxygen gas occupy 12.0 L at 2.5 atm pressure?",
+            "hint": "Leave temperature empty and remember the result will be in Kelvin.",
+            "inputs": {"pressure": 2.5, "volume": 12.0, "moles": 0.75},
+            "expected_result": 487.8,
+            "follow_up": "That's about 215°C! High pressure and large volume require high temperature."
+          }
+        ]
+      },
+      {
+        "id": "stp-volume",
+        "title": "Volume at STP",
+        "formula": "V = n × 22.4",
+        "description": "Calculate gas volume at standard temperature and pressure",
+        "inputs": [
+          {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"}
+        ]
+      },
+      {
+        "id": "percent-yield",
+        "title": "Percent Yield",
+        "formula": "% Yield = (Actual / Theoretical) × 100",
+        "description": "Calculate percentage yield of a reaction",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 4: Area of Study 1"],
+        "inputs": [
+          {"id": "actual", "label": "Actual Yield", "unit": "g", "type": "number"},
+          {"id": "theoretical", "label": "Theoretical Yield", "unit": "g", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "(actual / theoretical) * 100",
+          "result_unit": "%",
+          "result_label": "Percent Yield"
+        },
+        "examples": [
+          {
+            "problem": "A reaction has a theoretical yield of 15.6 g but only produces 12.3 g. Calculate the percent yield.",
+            "solution": "% Yield = (Actual / Theoretical) × 100 = (12.3 g / 15.6 g) × 100 = 78.8%",
+            "answer": "78.8%"
+          }
+        ],
+        "study_tips": {
+          "concept": "Percent yield compares what you actually obtained in a reaction to what you theoretically should have obtained. It's a measure of reaction efficiency and practical limitations.",
+          "key_points": [
+            "Theoretical yield assumes 100% conversion and perfect conditions",
+            "Actual yield is always measured experimentally",
+            "Percent yield is never greater than 100% (if it is, check for errors)"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Quantitative chemistry and reaction calculations",
+            "Unit 4 AoS 1: Industrial chemistry and process efficiency",
+            "Unit 4 AoS 2: Environmental impact and atom economy"
+          ],
+          "common_errors": [
+            "Confusing actual and theoretical yields",
+            "Forgetting to multiply by 100 for percentage",
+            "Using different units for actual and theoretical yields"
+          ],
+          "extensions": [
+            "What factors affect percent yield in real reactions?",
+            "How does percent yield relate to atom economy?",
+            "Why might a percent yield be low in industrial processes?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "A synthesis reaction should theoretically produce 25.0 g of product, but the lab actually obtained 18.7 g. What is the percent yield?",
+            "inputs": {"actual": 18.7, "theoretical": 25.0},
+            "expected_result": 74.8,
+            "follow_up": "This is a typical yield for many organic reactions. Factors like side reactions, incomplete conversion, and product loss during purification all contribute to yields below 100%."
+          },
+          {
+            "question": "In an industrial process, 450 kg of ammonia should be produced, but only 382 kg is actually obtained. Calculate the percent yield.",
+            "inputs": {"actual": 382, "theoretical": 450},
+            "expected_result": 84.9,
+            "follow_up": "Industrial yields are often higher than lab yields due to optimized conditions and continuous processes. This 85% yield would be considered quite good for industrial ammonia production."
+          }
+        ]
+      },
+      {
+        "id": "limiting-reagent",
+        "title": "Limiting Reagent",
+        "formula": "Compare mole ratios",
+        "description": "Determine the limiting reagent in a chemical reaction",
+        "inputs": [
+          {"id": "moles_a", "label": "Moles of Reactant A", "unit": "mol", "type": "number"},
+          {"id": "coeff_a", "label": "Coefficient of A", "unit": "", "type": "number"},
+          {"id": "moles_b", "label": "Moles of Reactant B", "unit": "mol", "type": "number"},
+          {"id": "coeff_b", "label": "Coefficient of B", "unit": "", "type": "number"}
+        ]
+      },
+      {
+        "id": "empirical-formula",
+        "title": "Empirical Formula Mass",
+        "formula": "Sum of atomic masses",
+        "description": "Calculate empirical formula mass from element masses",
+        "inputs": [
+          {"id": "elements", "label": "Element Masses (comma-separated)", "unit": "g/mol", "type": "text"}
+        ]
+      }
+    ],
+    "solutions": [
+      {
+        "id": "dilution",
+        "title": "Dilution Calculation",
+        "formula": "C₁V₁ = C₂V₂",
+        "description": "Calculate final volume in dilution problems",
+        "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+        "inputs": [
+          {"id": "c1", "label": "Initial Concentration (C₁)", "unit": "M", "type": "number"},
+          {"id": "v1", "label": "Initial Volume (V₁)", "unit": "mL", "type": "number"},
+          {"id": "c2", "label": "Final Concentration (C₂)", "unit": "M", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "(c1 * v1) / c2",
+          "result_unit": "mL",
+          "result_label": "Final Volume (V₂)"
+        },
+        "examples": [
+          {
+            "problem": "What volume of water must be added to 50.0 mL of 6.0 M HCl to make 2.0 M HCl?",
+            "solution": "C₁V₁ = C₂V₂ → V₂ = (6.0 M × 50.0 mL) / 2.0 M = 150 mL total. Water added = 150 - 50 = 100 mL",
+            "answer": "150 mL final volume"
+          }
+        ],
+        "study_tips": {
+          "concept": "Dilution maintains the same amount of solute while increasing total volume. The relationship C₁V₁ = C₂V₂ shows that concentration and volume are inversely proportional.",
+          "key_points": [
+            "Amount of solute stays constant during dilution",
+            "Always add water to acid, never acid to water (safety)",
+            "Final volume includes both original solution and added solvent"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 2: Solution preparation for quantitative experiments",
+            "Unit 3 AoS 1: Preparing standard solutions for titrations",
+            "Unit 4 AoS 1: Buffer preparation and pH control"
+          ],
+          "common_errors": [
+            "Confusing volume of water added with final volume",
+            "Using wrong units (mixing mL and L)",
+            "Not accounting for volume changes in some solutions"
+          ],
+          "extensions": [
+            "How would you perform serial dilutions?",
+            "What safety considerations apply when diluting acids?",
+            "How does temperature affect dilution calculations?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "You have 25.0 mL of 12.0 M HCl and need to dilute it to 3.0 M. What will be the final volume of the diluted solution?",
+            "inputs": {"c1": 12.0, "v1": 25.0, "c2": 3.0},
+            "expected_result": 100.0,
+            "follow_up": "You need to add 75.0 mL of water to reach 100.0 mL total. Remember: always add water to acid slowly while stirring for safety!"
+          },
+          {
+            "question": "A student takes 10.0 mL of 0.50 M NaOH and dilutes it to make 0.10 M solution. What is the final volume?",
+            "inputs": {"c1": 0.50, "v1": 10.0, "c2": 0.10},
+            "expected_result": 50.0,
+            "follow_up": "The concentration decreased by a factor of 5, so the volume increased by a factor of 5. This is the inverse relationship of dilution."
+          }
+        ]
+      },
+      {
+        "id": "percent-ww",
+        "title": "Percent Weight/Weight",
+        "formula": "% w/w = (mass solute / mass solution) × 100",
+        "description": "Calculate weight/weight percentage concentration",
+        "inputs": [
+          {"id": "mass_solute", "label": "Mass of Solute", "unit": "g", "type": "number"},
+          {"id": "mass_solution", "label": "Mass of Solution", "unit": "g", "type": "number"}
+        ]
+      },
+      {
+        "id": "percent-wv",
+        "title": "Percent Weight/Volume",
+        "formula": "% w/v = (mass solute / volume solution) × 100",
+        "description": "Calculate weight/volume percentage concentration",
+        "inputs": [
+          {"id": "mass_solute", "label": "Mass of Solute", "unit": "g", "type": "number"},
+          {"id": "volume_solution", "label": "Volume of Solution", "unit": "mL", "type": "number"}
+        ]
+      },
+      {
+        "id": "percent-vv",
+        "title": "Percent Volume/Volume",
+        "formula": "% v/v = (volume solute / volume solution) × 100",
+        "description": "Calculate volume/volume percentage concentration",
+        "inputs": [
+          {"id": "volume_solute", "label": "Volume of Solute", "unit": "mL", "type": "number"},
+          {"id": "volume_solution", "label": "Volume of Solution", "unit": "mL", "type": "number"}
+        ]
+      },
+      {
+        "id": "ppm",
+        "title": "Parts Per Million (ppm)",
+        "formula": "ppm = (mass solute / mass solution) × 10⁶",
+        "description": "Calculate parts per million concentration",
+        "inputs": [
+          {"id": "mass_solute", "label": "Mass of Solute", "unit": "mg", "type": "number"},
+          {"id": "mass_solution", "label": "Mass of Solution", "unit": "kg", "type": "number"}
+        ]
+      },
+      {
+        "id": "molality",
+        "title": "Molality Calculation",
+        "formula": "m = moles solute / kg solvent",
+        "description": "Calculate molality from moles and solvent mass",
+        "inputs": [
+          {"id": "moles_solute", "label": "Moles of Solute", "unit": "mol", "type": "number"},
+          {"id": "kg_solvent", "label": "Kg of Solvent", "unit": "kg", "type": "number"}
+        ]
+      }
+    ],
+    "acids-bases": [
+      {
+        "id": "ph-calculation",
+        "title": "pH from [H⁺]",
+        "formula": "pH = -log₁₀[H⁺]",
+        "description": "Calculate pH from hydrogen ion concentration",
+        "vce_units": ["Unit 3: Area of Study 1", "Unit 4: Area of Study 1"],
+        "inputs": [
+          {"id": "h_concentration", "label": "[H⁺] Concentration", "unit": "M", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "-Math.log10(h_concentration)",
+          "result_unit": "",
+          "result_label": "pH"
+        },
+        "examples": [
+          {
+            "problem": "Calculate the pH of a solution with [H⁺] = 1.0 × 10⁻³ M.",
+            "solution": "pH = -log₁₀[H⁺] = -log₁₀(1.0 × 10⁻³) = -(-3) = 3.00",
+            "answer": "pH = 3.00"
+          }
+        ],
+        "study_tips": {
+          "concept": "pH is a logarithmic scale that measures the acidity of a solution. Lower pH values indicate higher acidity (more H⁺ ions).",
+          "key_points": [
+            "pH scale ranges from 0 to 14 for aqueous solutions",
+            "pH < 7 is acidic, pH = 7 is neutral, pH > 7 is basic",
+            "Each pH unit represents a 10-fold change in [H⁺]"
+          ],
+          "vce_connections": [
+            "Unit 3 AoS 1: Acid-base reactions and pH calculations",
+            "Unit 4 AoS 1: Buffer systems and acid-base equilibria"
+          ],
+          "common_errors": [
+            "Forgetting the negative sign in the formula",
+            "Confusing pH with [H⁺] concentration",
+            "Not understanding the logarithmic relationship"
+          ],
+          "extensions": [
+            "How does pH relate to pOH (pH + pOH = 14)?",
+            "What happens to pH when [H⁺] doubles?",
+            "How do buffers resist pH changes?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "Calculate the pH of a solution where [H⁺] = 2.5 × 10⁻⁴ M. This is the concentration in a typical vinegar solution.",
+            "inputs": {"h_concentration": 0.00025},
+            "expected_result": 3.60,
+            "follow_up": "This pH of 3.6 confirms that vinegar is quite acidic. Notice how the logarithmic scale compresses the wide range of [H⁺] concentrations into manageable pH numbers."
+          },
+          {
+            "question": "What is the pH of a solution with [H⁺] = 5.0 × 10⁻⁹ M? This represents a typical basic household cleaner.",
+            "inputs": {"h_concentration": 0.000000005},
+            "expected_result": 8.30,
+            "follow_up": "A pH of 8.3 makes this solution basic (pH > 7). Even though [H⁺] seems small, the logarithmic relationship makes the pH calculation straightforward."
+          }
+        ]
+      },
+      {
+        "id": "h-concentration",
+        "title": "[H⁺] from pH",
+        "formula": "[H⁺] = 10⁻ᵖᴴ",
+        "description": "Calculate hydrogen ion concentration from pH",
+        "inputs": [
+          {"id": "ph", "label": "pH Value", "unit": "", "type": "number"}
+        ]
+      },
+      {
+        "id": "poh-calculation",
+        "title": "pOH Calculation",
+        "formula": "pOH = 14 - pH",
+        "description": "Calculate pOH from pH value",
+        "inputs": [
+          {"id": "ph", "label": "pH Value", "unit": "", "type": "number"}
+        ]
+      },
+      {
+        "id": "titration",
+        "title": "Acid-Base Titration",
+        "formula": "C₁V₁ = C₂V₂",
+        "description": "Calculate unknown concentration in titration",
+        "inputs": [
+          {"id": "c_acid", "label": "Acid Concentration", "unit": "M", "type": "number"},
+          {"id": "v_acid", "label": "Acid Volume", "unit": "mL", "type": "number"},
+          {"id": "v_base", "label": "Base Volume", "unit": "mL", "type": "number"}
+        ]
+      }
+    ],
+    "redox": [
+      {
+        "id": "cell-potential",
+        "title": "Cell Potential",
+        "formula": "E°cell = E°cathode - E°anode",
+        "description": "Calculate standard cell potential",
+        "inputs": [
+          {"id": "cathode_potential", "label": "Cathode Potential (E°)", "unit": "V", "type": "number"},
+          {"id": "anode_potential", "label": "Anode Potential (E°)", "unit": "V", "type": "number"}
+        ]
+      },
+      {
+        "id": "faraday-law",
+        "title": "Faraday's Law",
+        "formula": "Q = I × t",
+        "description": "Calculate charge and moles of electrons",
+        "inputs": [
+          {"id": "current", "label": "Current (I)", "unit": "A", "type": "number"},
+          {"id": "time", "label": "Time (t)", "unit": "s", "type": "number"}
+        ]
+      },
+      {
+        "id": "nernst-equation",
+        "title": "Nernst Equation",
+        "formula": "E = E° - (0.0592/n) × log(Q)",
+        "description": "Calculate cell potential under non-standard conditions",
+        "inputs": [
+          {"id": "standard_potential", "label": "Standard Potential (E°)", "unit": "V", "type": "number"},
+          {"id": "electrons", "label": "Number of electrons (n)", "unit": "", "type": "number"},
+          {"id": "reaction_quotient", "label": "Reaction Quotient (Q)", "unit": "", "type": "number"}
+        ]
+      }
+    ],
+    "thermochemistry": [
+      {
+        "id": "heat-capacity",
+        "title": "Heat Energy Calculation",
+        "formula": "q = mcΔT",
+        "description": "Calculate heat energy transfer using specific heat capacity",
+        "vce_units": ["Unit 1: Area of Study 3", "Unit 3: Area of Study 2"],
+        "inputs": [
+          {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
+          {"id": "specific_heat", "label": "Specific Heat (c)", "unit": "J/g°C", "type": "number"},
+          {"id": "temp_change", "label": "Temperature Change (ΔT)", "unit": "°C", "type": "number"}
+        ],
+        "calculation": {
+          "type": "basic_formula",
+          "formula": "mass * specific_heat * temp_change",
+          "result_unit": "J",
+          "result_label": "Heat Energy"
+        },
+        "examples": [
+          {
+            "problem": "Calculate the heat required to raise 100 g of water from 20°C to 80°C. (c_water = 4.18 J/g°C)",
+            "solution": "q = mcΔT = (100 g)(4.18 J/g°C)(80-20)°C = (100)(4.18)(60) = 25,080 J",
+            "answer": "25,080 J or 25.1 kJ"
+          }
+        ],
+        "study_tips": {
+          "concept": "Heat capacity calculations determine the energy required to change the temperature of a substance. Different materials have different specific heat capacities.",
+          "key_points": [
+            "Specific heat is an intensive property (doesn't depend on amount)",
+            "ΔT can be positive (heating) or negative (cooling)",
+            "Water has a high specific heat capacity (4.18 J/g°C)"
+          ],
+          "vce_connections": [
+            "Unit 1 AoS 3: Energy changes in chemical reactions",
+            "Unit 3 AoS 2: Enthalpy and thermochemistry calculations"
+          ],
+          "common_errors": [
+            "Forgetting to calculate ΔT = T_final - T_initial",
+            "Using wrong units for specific heat capacity",
+            "Confusing heat capacity with specific heat capacity"
+          ],
+          "extensions": [
+            "How does this relate to calorimetry experiments?",
+            "What factors affect a material's specific heat capacity?",
+            "How would you calculate the final temperature if heat is added?"
+          ]
+        },
+        "interactive_questions": [
+          {
+            "question": "How much heat energy is required to warm 250 g of water from 15°C to 85°C? (Use c = 4.18 J/g°C for water)",
+            "inputs": {"mass": 250, "specific_heat": 4.18, "temp_change": 70},
+            "expected_result": 73150,
+            "follow_up": "That's 73.2 kJ! This demonstrates why water is used as a coolant - it can absorb large amounts of heat with relatively small temperature changes."
+          },
+          {
+            "question": "A 150 g piece of copper (c = 0.385 J/g°C) cools from 95°C to 25°C. How much heat energy is released?",
+            "inputs": {"mass": 150, "specific_heat": 0.385, "temp_change": -70},
+            "expected_result": -4042.5,
+            "follow_up": "The negative value indicates heat is released (exothermic cooling). Notice how much less energy copper stores compared to water due to its lower specific heat capacity."
+          }
+        ]
+      },
+      {
+        "id": "enthalpy-formation",
+        "title": "Enthalpy of Formation",
+        "formula": "ΔH°rxn = Σ ΔH°f(products) - Σ ΔH°f(reactants)",
+        "description": "Calculate reaction enthalpy from formation enthalpies",
+        "inputs": [
+          {"id": "products_enthalpy", "label": "Sum of Products ΔH°f", "unit": "kJ/mol", "type": "number"},
+          {"id": "reactants_enthalpy", "label": "Sum of Reactants ΔH°f", "unit": "kJ/mol", "type": "number"}
+        ]
+      },
+      {
+        "id": "bond-energy",
+        "title": "Bond Energy Calculation",
+        "formula": "ΔH = Bonds broken - Bonds formed",
+        "description": "Calculate enthalpy change from bond energies",
+        "inputs": [
+          {"id": "bonds_broken", "label": "Energy of Bonds Broken", "unit": "kJ/mol", "type": "number"},
+          {"id": "bonds_formed", "label": "Energy of Bonds Formed", "unit": "kJ/mol", "type": "number"}
+        ]
+      }
+    ],
+    "analytical": [
+      {
+        "id": "beer-lambert",
+        "title": "Beer-Lambert Law",
+        "formula": "A = εcl",
+        "description": "Calculate absorbance using Beer-Lambert law",
+        "inputs": [
+          {"id": "molar_absorptivity", "label": "Molar Absorptivity (ε)", "unit": "L/mol⋅cm", "type": "number"},
+          {"id": "concentration", "label": "Concentration (c)", "unit": "M", "type": "number"},
+          {"id": "path_length", "label": "Path Length (l)", "unit": "cm", "type": "number"}
+        ]
+      },
+      {
+        "id": "calibration-curve",
+        "title": "Calibration Curve",
+        "formula": "y = mx + b",
+        "description": "Calculate y-value from linear calibration curve",
+        "inputs": [
+          {"id": "slope", "label": "Slope (m)", "unit": "", "type": "number"},
+          {"id": "x_value", "label": "x-value", "unit": "", "type": "number"},
+          {"id": "y_intercept", "label": "y-intercept (b)", "unit": "", "type": "number"}
+        ]
+      }
+    ],
+    "organic": [
+      {
+        "id": "molecular-formula",
+        "title": "Molecular Formula",
+        "formula": "Molecular Formula = (Empirical Formula)ₙ",
+        "description": "Calculate molecular formula multiplier",
+        "inputs": [
+          {"id": "empirical_mass", "label": "Empirical Formula Mass", "unit": "g/mol", "type": "number"},
+          {"id": "molecular_mass", "label": "Molecular Mass", "unit": "g/mol", "type": "number"}
+        ]
+      },
+      {
+        "id": "percent-composition",
+        "title": "Percent Composition",
+        "formula": "% Element = (Mass of element / Total mass) × 100",
+        "description": "Calculate percentage composition of an element",
+        "inputs": [
+          {"id": "element_mass", "label": "Mass of Element", "unit": "g/mol", "type": "number"},
+          {"id": "total_mass", "label": "Total Molecular Mass", "unit": "g/mol", "type": "number"}
+        ]
+      }
+    ]
+  },
+  "lookup_data": [
+    {
+      "term": "Avogadro's Number",
+      "formula": "6.022 × 10²³ particles/mol",
+      "description": "Number of particles in one mole"
+    },
+    {
+      "term": "Ideal Gas Constant",
+      "formula": "R = 0.08206 L⋅atm/(mol⋅K)",
+      "description": "Gas constant for ideal gas law calculations"
+    },
+    {
+      "term": "Standard Temperature and Pressure",
+      "formula": "STP: 0°C (273.15 K) and 1 atm",
+      "description": "Standard conditions for gas measurements"
+    },
+    {
+      "term": "Molar Volume at STP",
+      "formula": "22.4 L/mol",
+      "description": "Volume occupied by one mole of gas at STP"
+    },
+    {
+      "term": "Faraday Constant",
+      "formula": "F = 96,485 C/mol",
+      "description": "Charge of one mole of electrons"
+    },
+    {
+      "term": "Water Ion Product",
+      "formula": "Kw = 1.0 × 10⁻¹⁴ at 25°C",
+      "description": "Ion product constant of water"
+    },
+    {
+      "term": "pH + pOH",
+      "formula": "pH + pOH = 14 at 25°C",
+      "description": "Relationship between pH and pOH"
+    },
+    {
+      "term": "Planck's Constant",
+      "formula": "h = 6.626 × 10⁻³⁴ J⋅s",
+      "description": "Fundamental constant for quantum mechanics"
+    },
+    {
+      "term": "Speed of Light",
+      "formula": "c = 3.00 × 10⁸ m/s",
+      "description": "Speed of light in vacuum"
+    },
+    {
+      "term": "Atomic Mass Unit",
+      "formula": "1 amu = 1.66054 × 10⁻²⁷ kg",
+      "description": "Atomic mass unit conversion"
+    },
+    {
+      "term": "Boiling Point of Water",
+      "formula": "100°C = 373.15 K at 1 atm",
+      "description": "Standard boiling point of water"
+    },
+    {
+      "term": "Freezing Point of Water",
+      "formula": "0°C = 273.15 K at 1 atm",
+      "description": "Standard freezing point of water"
+    },
+    {
+      "term": "Specific Heat of Water",
+      "formula": "4.18 J/(g⋅°C)",
+      "description": "Specific heat capacity of liquid water"
+    },
+    {
+      "term": "Standard Pressure",
+      "formula": "1 atm = 101.325 kPa = 760 mmHg",
+      "description": "Standard atmospheric pressure conversions"
+    },
+    {
+      "term": "Universal Gas Constant",
+      "formula": "R = 8.314 J/(mol⋅K)",
+      "description": "Universal gas constant in SI units"
+    }
+  ]
+}
+
+

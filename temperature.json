@@ -1,0 +1,57 @@
+{
+  "id": "temperature-converter",
+  "title": "Temperature Converter",
+  "formula": "K = °C + 273.15",
+  "description": "Convert between temperature scales",
+  "category": "toolkit",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 2"],
+  "inputs": [
+    {"id": "value", "label": "Temperature Value", "unit": "", "type": "number"},
+    {"id": "from", "label": "From Scale", "unit": "", "type": "select", "options": ["Celsius", "Kelvin", "Fahrenheit"]},
+    {"id": "to", "label": "To Scale", "unit": "", "type": "select", "options": ["Celsius", "Kelvin", "Fahrenheit"]}
+  ],
+  "examples": [
+    {
+      "problem": "Convert 25°C to Kelvin",
+      "solution": "K = °C + 273.15 = 25 + 273.15 = 298.15 K",
+      "answer": "298.15 K"
+    }
+  ],
+  "study_tips": {
+    "concept": "Temperature conversions are essential for gas law calculations. Kelvin is the absolute temperature scale used in all gas law equations.",
+    "key_points": [
+      "Kelvin has no negative values (absolute zero = 0 K)",
+      "Always use Kelvin for gas law calculations",
+      "K = °C + 273.15 (not 273!)",
+      "°F = (°C × 9/5) + 32"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Gas laws require Kelvin temperature",
+      "Unit 3 AoS 2: Thermochemistry and energy calculations"
+    ],
+    "common_errors": [
+      "Using 273 instead of 273.15 for conversion",
+      "Forgetting to convert to Kelvin in gas laws",
+      "Mixing up conversion formulas"
+    ],
+    "extensions": [
+      "What is absolute zero and why is it important?",
+      "How does temperature affect molecular motion?",
+      "Why do we use different temperature scales?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "Convert standard temperature (0°C) to Kelvin.",
+      "inputs": {"value": 0, "from": "Celsius", "to": "Kelvin"},
+      "expected_result": 273.15,
+      "follow_up": "273.15 K is standard temperature. This is the freezing point of water and a reference point for STP."
+    },
+    {
+      "question": "What is body temperature (37°C) in Kelvin?",
+      "inputs": {"value": 37, "from": "Celsius", "to": "Kelvin"},
+      "expected_result": 310.15,
+      "follow_up": "310.15 K. Notice that in Kelvin, body temperature is a much larger number - there are no negative Kelvin values!"
+    }
+  ]
+}

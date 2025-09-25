@@ -2254,31 +2254,32 @@ body {
 
 /* Practice mode active calculator styling */
 .calc-card.practice-active {
-    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-    border: 2px solid var(--success);
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
-    transform: scale(1.02);
+    border: 2px solid var(--accent-blue);
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
     transition: all 0.3s ease;
 }
 
-.calc-card.practice-active .calc-header {
-    background: linear-gradient(135deg, var(--success), #059669);
-    color: white;
+/* Practice answer feedback animations */
+.calc-card.correct-answer {
+    animation: correctPulse 1s ease-in-out;
+    border-color: var(--success);
 }
 
-.calc-card.practice-active .calc-title {
-    color: white;
+.calc-card.incorrect-answer {
+    animation: incorrectShake 0.6s ease-in-out;
+    border-color: var(--danger);
 }
 
-.calc-card.practice-active .minimize-btn,
-.calc-card.practice-active .close-btn {
-    color: rgba(255, 255, 255, 0.8);
+@keyframes correctPulse {
+    0% { box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1); }
+    50% { box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
+    100% { box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1); }
 }
 
-.calc-card.practice-active .minimize-btn:hover,
-.calc-card.practice-active .close-btn:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.2);
+@keyframes incorrectShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 
 /* Inactive practice questions during active session */

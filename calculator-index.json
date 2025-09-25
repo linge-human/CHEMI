@@ -1,0 +1,111 @@
+{
+  "calculators": [
+    {
+      "id": "mass-moles",
+      "category": "stoichiometry",
+      "file": "calculators/mass-moles.json"
+    },
+    {
+      "id": "moles-mass",
+      "category": "stoichiometry",
+      "file": "calculators/moles-mass.json"
+    },
+    {
+      "id": "molarity",
+      "category": "stoichiometry",
+      "file": "calculators/molarity.json"
+    },
+    {
+      "id": "ideal-gas",
+      "category": "stoichiometry",
+      "file": "calculators/ideal-gas.json"
+    },
+    {
+      "id": "percent-yield",
+      "category": "stoichiometry",
+      "file": "calculators/percent-yield.json"
+    },
+    {
+      "id": "limiting-reagent",
+      "category": "stoichiometry",
+      "file": "calculators/limiting-reagent.json"
+    },
+    {
+      "id": "dilution",
+      "category": "solutions",
+      "file": "calculators/dilution.json"
+    },
+    {
+      "id": "ph-calculation",
+      "category": "acids-bases",
+      "file": "calculators/ph-calculation.json"
+    },
+    {
+      "id": "h-concentration",
+      "category": "acids-bases",
+      "file": "calculators/h-concentration.json"
+    },
+    {
+      "id": "heat-capacity",
+      "category": "thermochemistry",
+      "file": "calculators/heat-capacity.json"
+    },
+    {
+      "id": "molar-mass",
+      "category": "toolkit",
+      "file": "calculators/molar-mass.json"
+    },
+    {
+      "id": "ion-charge",
+      "category": "toolkit",
+      "file": "calculators/ion-charge.json"
+    },
+    {
+      "id": "temperature-converter",
+      "category": "toolkit",
+      "file": "calculators/temperature.json"
+    }
+  ],
+  "lookup_data": [
+    {
+      "term": "Avogadro's Number",
+      "formula": "6.022 × 10²³ particles/mol",
+      "description": "Number of particles in one mole"
+    },
+    {
+      "term": "Ideal Gas Constant",
+      "formula": "R = 0.08206 L⋅atm/(mol⋅K)",
+      "description": "Gas constant for ideal gas law calculations"
+    },
+    {
+      "term": "Standard Temperature and Pressure",
+      "formula": "STP: 0°C (273.15 K) and 1 atm",
+      "description": "Standard conditions for gas measurements"
+    },
+    {
+      "term": "Molar Volume at STP",
+      "formula": "22.4 L/mol",
+      "description": "Volume occupied by one mole of gas at STP"
+    },
+    {
+      "term": "Water Ion Product",
+      "formula": "Kw = 1.0 × 10⁻¹⁴ at 25°C",
+      "description": "Ion product constant of water"
+    },
+    {
+      "term": "pH + pOH",
+      "formula": "pH + pOH = 14 at 25°C",
+      "description": "Relationship between pH and pOH"
+    },
+    {
+      "term": "Specific Heat of Water",
+      "formula": "4.18 J/(g⋅°C)",
+      "description": "Specific heat capacity of liquid water"
+    },
+    {
+      "term": "Standard Pressure",
+      "formula": "1 atm = 101.325 kPa = 760 mmHg",
+      "description": "Standard atmospheric pressure conversions"
+    }
+  ]
+}

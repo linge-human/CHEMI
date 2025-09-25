@@ -1,0 +1,70 @@
+{
+  "id": "ideal-gas",
+  "title": "Ideal Gas Law (PV=nRT)",
+  "formula": "PV = nRT",
+  "description": "Solve for any variable in the ideal gas law given the other three",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "pressure", "label": "Pressure (P)", "unit": "atm", "type": "number", "optional": true},
+    {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number", "optional": true},
+    {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number", "optional": true},
+    {"id": "temperature", "label": "Temperature (T)", "unit": "K", "type": "number", "optional": true}
+  ],
+  "calculation": {
+    "type": "solve_for_missing",
+    "R_constant": 0.08206
+  },
+  "examples": [
+    {
+      "problem": "Find the pressure when n = 2.0 mol, T = 300 K, V = 10.0 L",
+      "solution": "PV = nRT → P = nRT/V = (2.0)(0.08206)(300)/10.0 = 4.92 atm",
+      "answer": "4.92 atm"
+    },
+    {
+      "problem": "Find the volume when P = 1.5 atm, n = 0.5 mol, T = 273 K",
+      "solution": "PV = nRT → V = nRT/P = (0.5)(0.08206)(273)/1.5 = 7.46 L",
+      "answer": "7.46 L"
+    }
+  ],
+  "study_tips": {
+    "concept": "The ideal gas law shows the relationship between all four gas properties. In problems, you typically know three variables and solve for the fourth.",
+    "key_points": [
+      "Leave one field empty - the calculator will solve for it",
+      "Temperature must always be in Kelvin (K = °C + 273.15)",
+      "R = 0.08206 L·atm/(mol·K) when using atm and L",
+      "All four variables are interconnected"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Gas stoichiometry and molar volume",
+      "Unit 3 AoS 1: Gas behavior in reactions and equilibrium"
+    ],
+    "common_errors": [
+      "Providing all four values instead of leaving one blank",
+      "Using Celsius instead of Kelvin for temperature",
+      "Mixing pressure units (atm vs kPa vs mmHg)",
+      "Forgetting that this assumes ideal gas behavior"
+    ],
+    "extensions": [
+      "What conditions make gases behave non-ideally?",
+      "How does this relate to Avogadro's law and Charles's law?",
+      "Can you derive the other gas laws from PV=nRT?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "A balloon contains 1.5 mol of helium at 22°C and occupies 8.0 L. Use the calculator to find the pressure inside the balloon.",
+      "hint": "Remember to convert temperature to Kelvin (22°C + 273.15 = 295.15 K). Leave the pressure field empty.",
+      "inputs": {"volume": 8.0, "moles": 1.5, "temperature": 295.15},
+      "expected_result": 4.52,
+      "follow_up": "This pressure is about 4.5 times atmospheric pressure! What would happen if you heated this balloon?"
+    },
+    {
+      "question": "At what temperature would 0.75 mol of oxygen gas occupy 12.0 L at 2.5 atm pressure?",
+      "hint": "Leave temperature empty and remember the result will be in Kelvin.",
+      "inputs": {"pressure": 2.5, "volume": 12.0, "moles": 0.75},
+      "expected_result": 487.8,
+      "follow_up": "That's about 215°C! High pressure and large volume require high temperature."
+    }
+  ]
+}

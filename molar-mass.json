@@ -1,0 +1,55 @@
+{
+  "id": "molar-mass",
+  "title": "Molar Mass Calculator",
+  "formula": "M = Σ(atomic masses)",
+  "description": "Calculate molar mass from molecular formula",
+  "category": "toolkit",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "formula", "label": "Chemical Formula", "unit": "", "type": "text"}
+  ],
+  "examples": [
+    {
+      "problem": "Calculate the molar mass of Ca(OH)₂",
+      "solution": "M = 40.08 + 2(16.00 + 1.008) = 40.08 + 34.03 = 74.11 g/mol",
+      "answer": "74.11 g/mol"
+    }
+  ],
+  "study_tips": {
+    "concept": "Molar mass is the mass of one mole of a substance. It's numerically equal to the formula mass but has units of g/mol.",
+    "key_points": [
+      "Add atomic masses of all atoms in the formula",
+      "Multiply by subscripts for each element",
+      "Don't forget coefficients in parentheses",
+      "Units are always g/mol"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Essential for all stoichiometric calculations",
+      "Unit 3 AoS 1: Required for solution preparation"
+    ],
+    "common_errors": [
+      "Forgetting to multiply by subscripts",
+      "Missing atoms inside parentheses",
+      "Using wrong atomic masses from periodic table"
+    ],
+    "extensions": [
+      "How do you handle hydrated compounds like CuSO₄·5H₂O?",
+      "What's the difference between formula mass and molecular mass?",
+      "How does isotopic abundance affect molar mass?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "Calculate the molar mass of aluminum sulfate Al₂(SO₄)₃",
+      "inputs": {"formula": "Al2(SO4)3"},
+      "expected_result": 342.15,
+      "follow_up": "342.15 g/mol. Notice: 2 Al atoms, 3 S atoms, and 12 O atoms total!"
+    },
+    {
+      "question": "Find the molar mass of glucose C₆H₁₂O₆",
+      "inputs": {"formula": "C6H12O6"},
+      "expected_result": 180.16,
+      "follow_up": "180.16 g/mol. This sugar molecule is fundamental to cellular respiration."
+    }
+  ]
+}

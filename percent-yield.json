@@ -1,0 +1,62 @@
+{
+  "id": "percent-yield",
+  "title": "Percent Yield",
+  "formula": "% Yield = (Actual / Theoretical) × 100",
+  "description": "Calculate percentage yield of a reaction",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 4: Area of Study 1"],
+  "inputs": [
+    {"id": "actual", "label": "Actual Yield", "unit": "g", "type": "number"},
+    {"id": "theoretical", "label": "Theoretical Yield", "unit": "g", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "(actual / theoretical) * 100",
+    "result_unit": "%",
+    "result_label": "Percent Yield"
+  },
+  "examples": [
+    {
+      "problem": "A reaction has a theoretical yield of 15.6 g but only produces 12.3 g. Calculate the percent yield.",
+      "solution": "% Yield = (Actual / Theoretical) × 100 = (12.3 g / 15.6 g) × 100 = 78.8%",
+      "answer": "78.8%"
+    }
+  ],
+  "study_tips": {
+    "concept": "Percent yield compares what you actually obtained in a reaction to what you theoretically should have obtained. It's a measure of reaction efficiency and practical limitations.",
+    "key_points": [
+      "Theoretical yield assumes 100% conversion and perfect conditions",
+      "Actual yield is always measured experimentally",
+      "Percent yield is never greater than 100% (if it is, check for errors)"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Quantitative chemistry and reaction calculations",
+      "Unit 4 AoS 1: Industrial chemistry and process efficiency",
+      "Unit 4 AoS 2: Environmental impact and atom economy"
+    ],
+    "common_errors": [
+      "Confusing actual and theoretical yields",
+      "Forgetting to multiply by 100 for percentage",
+      "Using different units for actual and theoretical yields"
+    ],
+    "extensions": [
+      "What factors affect percent yield in real reactions?",
+      "How does percent yield relate to atom economy?",
+      "Why might a percent yield be low in industrial processes?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "A synthesis reaction should theoretically produce 25.0 g of product, but the lab actually obtained 18.7 g. What is the percent yield?",
+      "inputs": {"actual": 18.7, "theoretical": 25.0},
+      "expected_result": 74.8,
+      "follow_up": "This is a typical yield for many organic reactions. Factors like side reactions, incomplete conversion, and product loss during purification all contribute to yields below 100%."
+    },
+    {
+      "question": "In an industrial process, 450 kg of ammonia should be produced, but only 382 kg is actually obtained. Calculate the percent yield.",
+      "inputs": {"actual": 382, "theoretical": 450},
+      "expected_result": 84.9,
+      "follow_up": "Industrial yields are often higher than lab yields due to optimized conditions and continuous processes. This 85% yield would be considered quite good for industrial ammonia production."
+    }
+  ]
+}

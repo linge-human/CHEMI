@@ -1,0 +1,62 @@
+{
+  "id": "heat-capacity",
+  "title": "Heat Energy Calculation",
+  "formula": "q = mcΔT",
+  "description": "Calculate heat energy transfer using specific heat capacity",
+  "category": "thermochemistry",
+  "vce_units": ["Unit 1: Area of Study 3", "Unit 3: Area of Study 2"],
+  "inputs": [
+    {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
+    {"id": "specific_heat", "label": "Specific Heat (c)", "unit": "J/g°C", "type": "number"},
+    {"id": "temp_change", "label": "Temperature Change (ΔT)", "unit": "°C", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "mass * specific_heat * temp_change",
+    "result_unit": "J",
+    "result_label": "Heat Energy"
+  },
+  "examples": [
+    {
+      "problem": "Calculate the heat required to raise 100 g of water from 20°C to 80°C. (c_water = 4.18 J/g°C)",
+      "solution": "q = mcΔT = (100 g)(4.18 J/g°C)(80-20)°C = (100)(4.18)(60) = 25,080 J",
+      "answer": "25,080 J or 25.1 kJ"
+    }
+  ],
+  "study_tips": {
+    "concept": "Heat capacity calculations determine the energy required to change the temperature of a substance. Different materials have different specific heat capacities.",
+    "key_points": [
+      "Specific heat is an intensive property (doesn't depend on amount)",
+      "ΔT can be positive (heating) or negative (cooling)",
+      "Water has a high specific heat capacity (4.18 J/g°C)"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 3: Energy changes in chemical reactions",
+      "Unit 3 AoS 2: Enthalpy and thermochemistry calculations"
+    ],
+    "common_errors": [
+      "Forgetting to calculate ΔT = T_final - T_initial",
+      "Using wrong units for specific heat capacity",
+      "Confusing heat capacity with specific heat capacity"
+    ],
+    "extensions": [
+      "How does this relate to calorimetry experiments?",
+      "What factors affect a material's specific heat capacity?",
+      "How would you calculate the final temperature if heat is added?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "How much heat energy is required to warm 250 g of water from 15°C to 85°C? (Use c = 4.18 J/g°C for water)",
+      "inputs": {"mass": 250, "specific_heat": 4.18, "temp_change": 70},
+      "expected_result": 73150,
+      "follow_up": "That's 73.2 kJ! This demonstrates why water is used as a coolant - it can absorb large amounts of heat with relatively small temperature changes."
+    },
+    {
+      "question": "A 150 g piece of copper (c = 0.385 J/g°C) cools from 95°C to 25°C. How much heat energy is released?",
+      "inputs": {"mass": 150, "specific_heat": 0.385, "temp_change": -70},
+      "expected_result": -4042.5,
+      "follow_up": "The negative value indicates heat is released (exothermic cooling). Notice how much less energy copper stores compared to water due to its lower specific heat capacity."
+    }
+  ]
+}

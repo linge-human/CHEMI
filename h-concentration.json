@@ -1,0 +1,61 @@
+{
+  "id": "h-concentration",
+  "title": "[H⁺] from pH",
+  "formula": "[H⁺] = 10⁻ᵖᴴ",
+  "description": "Calculate hydrogen ion concentration from pH",
+  "category": "acids-bases",
+  "vce_units": ["Unit 3: Area of Study 1", "Unit 4: Area of Study 1"],
+  "inputs": [
+    {"id": "ph", "label": "pH Value", "unit": "", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "Math.pow(10, -ph)",
+    "result_unit": "M",
+    "result_label": "[H⁺] Concentration"
+  },
+  "examples": [
+    {
+      "problem": "Find [H⁺] for a solution with pH = 4.5",
+      "solution": "[H⁺] = 10⁻⁴·⁵ = 3.16 × 10⁻⁵ M",
+      "answer": "3.16 × 10⁻⁵ M"
+    }
+  ],
+  "study_tips": {
+    "concept": "This calculation reverses the pH formula to find hydrogen ion concentration. It's the antilog (10^x) of negative pH.",
+    "key_points": [
+      "pH and [H⁺] have an inverse logarithmic relationship",
+      "Lower pH means higher [H⁺] concentration",
+      "Each pH unit represents a 10-fold change in [H⁺]",
+      "Neutral water at 25°C: pH = 7, [H⁺] = 1 × 10⁻⁷ M"
+    ],
+    "vce_connections": [
+      "Unit 3 AoS 1: Acid-base equilibria and calculations",
+      "Unit 4 AoS 1: Buffer systems and pH control"
+    ],
+    "common_errors": [
+      "Forgetting the negative sign in the exponent",
+      "Not converting to scientific notation",
+      "Confusing [H⁺] with [OH⁻] concentration"
+    ],
+    "extensions": [
+      "How do you find [OH⁻] from pH?",
+      "What's the relationship between [H⁺] and [H₃O⁺]?",
+      "How does temperature affect this calculation?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "A soft drink has a pH of 3.0. Calculate its hydrogen ion concentration.",
+      "inputs": {"ph": 3.0},
+      "expected_result": 0.001,
+      "follow_up": "[H⁺] = 1 × 10⁻³ M shows this is quite acidic! The hydrogen ion concentration is 1000 times higher than neutral water."
+    },
+    {
+      "question": "Blood has a pH of 7.4. What is the [H⁺] concentration?",
+      "inputs": {"ph": 7.4},
+      "expected_result": 0.00000004,
+      "follow_up": "[H⁺] = 4 × 10⁻⁸ M. Blood is slightly basic, with [H⁺] lower than pure water. Small pH changes here can be life-threatening!"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "mass-moles",
+  "title": "Mass to Moles",
+  "formula": "n = m / M",
+  "description": "Calculate moles from mass and molar mass",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "mass", "label": "Mass (m)", "unit": "g", "type": "number"},
+    {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "mass / molar_mass",
+    "result_unit": "mol",
+    "result_label": "Amount of substance"
+  },
+  "examples": [
+    {
+      "problem": "Calculate the number of moles in 25.0 g of CaCO₃ (molar mass = 100.1 g/mol).",
+      "solution": "n = m / M = 25.0 g / 100.1 g/mol = 0.250 mol",
+      "answer": "0.250 mol"
+    }
+  ],
+  "study_tips": {
+    "concept": "The mole is the fundamental unit for measuring amounts of substances in chemistry. This calculation converts mass (what you can weigh) to moles (what participates in reactions).",
+    "key_points": [
+      "Always use the correct molar mass from the periodic table",
+      "Check units: mass in grams, molar mass in g/mol, result in mol",
+      "The mole ratio determines stoichiometric relationships in reactions"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Foundation for all stoichiometric calculations",
+      "Unit 3 AoS 1: Essential for solution preparation and analysis",
+      "Unit 4 AoS 1: Used in equilibrium and acid-base calculations"
+    ],
+    "common_errors": [
+      "Using atomic mass instead of molar mass for compounds",
+      "Forgetting to convert between g and kg when needed",
+      "Confusing mass with weight (mass is constant, weight varies)"
+    ],
+    "extensions": [
+      "How would you calculate moles if given the volume and density?",
+      "What's the relationship between moles and Avogadro's number?",
+      "How does this calculation connect to chemical equation balancing?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "How many moles are present in 58.4 g of sodium chloride (NaCl)? The molar mass of NaCl is 58.4 g/mol.",
+      "inputs": {"mass": 58.4, "molar_mass": 58.4},
+      "expected_result": 1.0,
+      "follow_up": "Perfect! This represents exactly one mole of NaCl, which contains 6.022 × 10²³ formula units."
+    },
+    {
+      "question": "A student has 12.5 g of calcium carbonate (CaCO₃). If the molar mass is 100.1 g/mol, how many moles is this?",
+      "inputs": {"mass": 12.5, "molar_mass": 100.1},
+      "expected_result": 0.125,
+      "follow_up": "This is exactly 1/8 of a mole. In stoichiometry problems, you'll often work with fractional moles like this."
+    }
+  ]
+}

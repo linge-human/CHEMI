@@ -1,0 +1,63 @@
+{
+  "id": "dilution",
+  "title": "Dilution Calculation",
+  "formula": "C₁V₁ = C₂V₂",
+  "description": "Calculate final volume in dilution problems",
+  "category": "solutions",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "c1", "label": "Initial Concentration (C₁)", "unit": "M", "type": "number"},
+    {"id": "v1", "label": "Initial Volume (V₁)", "unit": "mL", "type": "number"},
+    {"id": "c2", "label": "Final Concentration (C₂)", "unit": "M", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "(c1 * v1) / c2",
+    "result_unit": "mL",
+    "result_label": "Final Volume (V₂)"
+  },
+  "examples": [
+    {
+      "problem": "What volume of water must be added to 50.0 mL of 6.0 M HCl to make 2.0 M HCl?",
+      "solution": "C₁V₁ = C₂V₂ → V₂ = (6.0 M × 50.0 mL) / 2.0 M = 150 mL total. Water added = 150 - 50 = 100 mL",
+      "answer": "150 mL final volume"
+    }
+  ],
+  "study_tips": {
+    "concept": "Dilution maintains the same amount of solute while increasing total volume. The relationship C₁V₁ = C₂V₂ shows that concentration and volume are inversely proportional.",
+    "key_points": [
+      "Amount of solute stays constant during dilution",
+      "Always add water to acid, never acid to water (safety)",
+      "Final volume includes both original solution and added solvent"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Solution preparation for quantitative experiments",
+      "Unit 3 AoS 1: Preparing standard solutions for titrations",
+      "Unit 4 AoS 1: Buffer preparation and pH control"
+    ],
+    "common_errors": [
+      "Confusing volume of water added with final volume",
+      "Using wrong units (mixing mL and L)",
+      "Not accounting for volume changes in some solutions"
+    ],
+    "extensions": [
+      "How would you perform serial dilutions?",
+      "What safety considerations apply when diluting acids?",
+      "How does temperature affect dilution calculations?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "You have 25.0 mL of 12.0 M HCl and need to dilute it to 3.0 M. What will be the final volume of the diluted solution?",
+      "inputs": {"c1": 12.0, "v1": 25.0, "c2": 3.0},
+      "expected_result": 100.0,
+      "follow_up": "You need to add 75.0 mL of water to reach 100.0 mL total. Remember: always add water to acid slowly while stirring for safety!"
+    },
+    {
+      "question": "A student takes 10.0 mL of 0.50 M NaOH and dilutes it to make 0.10 M solution. What is the final volume?",
+      "inputs": {"c1": 0.50, "v1": 10.0, "c2": 0.10},
+      "expected_result": 50.0,
+      "follow_up": "The concentration decreased by a factor of 5, so the volume increased by a factor of 5. This is the inverse relationship of dilution."
+    }
+  ]
+}

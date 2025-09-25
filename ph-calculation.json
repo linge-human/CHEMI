@@ -1,0 +1,60 @@
+{
+  "id": "ph-calculation",
+  "title": "pH from [H⁺]",
+  "formula": "pH = -log₁₀[H⁺]",
+  "description": "Calculate pH from hydrogen ion concentration",
+  "category": "acids-bases",
+  "vce_units": ["Unit 3: Area of Study 1", "Unit 4: Area of Study 1"],
+  "inputs": [
+    {"id": "h_concentration", "label": "[H⁺] Concentration", "unit": "M", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "-Math.log10(h_concentration)",
+    "result_unit": "",
+    "result_label": "pH"
+  },
+  "examples": [
+    {
+      "problem": "Calculate the pH of a solution with [H⁺] = 1.0 × 10⁻³ M.",
+      "solution": "pH = -log₁₀[H⁺] = -log₁₀(1.0 × 10⁻³) = -(-3) = 3.00",
+      "answer": "pH = 3.00"
+    }
+  ],
+  "study_tips": {
+    "concept": "pH is a logarithmic scale that measures the acidity of a solution. Lower pH values indicate higher acidity (more H⁺ ions).",
+    "key_points": [
+      "pH scale ranges from 0 to 14 for aqueous solutions",
+      "pH < 7 is acidic, pH = 7 is neutral, pH > 7 is basic",
+      "Each pH unit represents a 10-fold change in [H⁺]"
+    ],
+    "vce_connections": [
+      "Unit 3 AoS 1: Acid-base reactions and pH calculations",
+      "Unit 4 AoS 1: Buffer systems and acid-base equilibria"
+    ],
+    "common_errors": [
+      "Forgetting the negative sign in the formula",
+      "Confusing pH with [H⁺] concentration",
+      "Not understanding the logarithmic relationship"
+    ],
+    "extensions": [
+      "How does pH relate to pOH (pH + pOH = 14)?",
+      "What happens to pH when [H⁺] doubles?",
+      "How do buffers resist pH changes?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "Calculate the pH of a solution where [H⁺] = 2.5 × 10⁻⁴ M. This is the concentration in a typical vinegar solution.",
+      "inputs": {"h_concentration": 0.00025},
+      "expected_result": 3.60,
+      "follow_up": "This pH of 3.6 confirms that vinegar is quite acidic. Notice how the logarithmic scale compresses the wide range of [H⁺] concentrations into manageable pH numbers."
+    },
+    {
+      "question": "What is the pH of a solution with [H⁺] = 5.0 × 10⁻⁹ M? This represents a typical basic household cleaner.",
+      "inputs": {"h_concentration": 0.000000005},
+      "expected_result": 8.30,
+      "follow_up": "A pH of 8.3 makes this solution basic (pH > 7). Even though [H⁺] seems small, the logarithmic relationship makes the pH calculation straightforward."
+    }
+  ]
+}

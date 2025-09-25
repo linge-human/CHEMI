@@ -1,0 +1,55 @@
+{
+  "id": "ion-charge",
+  "title": "Ion Charge Lookup",
+  "formula": "Database lookup",
+  "description": "Find charge and name of ions",
+  "category": "toolkit",
+  "vce_units": ["Unit 1: Area of Study 1", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "symbol", "label": "Ion Symbol", "unit": "", "type": "text"}
+  ],
+  "examples": [
+    {
+      "problem": "Look up the charge of sulfate ion",
+      "solution": "SO₄²⁻ has a charge of -2",
+      "answer": "SO₄²⁻: -2 (Sulfate ion)"
+    }
+  ],
+  "study_tips": {
+    "concept": "Ions are atoms or molecules with a net electric charge. Knowing common ion charges is essential for writing formulas and balancing equations.",
+    "key_points": [
+      "Cations are positive (lost electrons)",
+      "Anions are negative (gained electrons)",
+      "Transition metals often have multiple oxidation states",
+      "Polyatomic ions act as a single unit"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 1: Ionic bonding and formula writing",
+      "Unit 3 AoS 1: Acid-base reactions and salt formation"
+    ],
+    "common_errors": [
+      "Confusing charge number with subscript",
+      "Forgetting polyatomic ion charges",
+      "Not recognizing variable oxidation states"
+    ],
+    "extensions": [
+      "How do you predict ion charges from electron configuration?",
+      "Why do transition metals have variable charges?",
+      "How do you name ions systematically?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "Find the charge and name for the iron ions that can form.",
+      "inputs": {"symbol": "Fe"},
+      "expected_result": "multiple",
+      "follow_up": "Iron commonly forms Fe²⁺ (iron(II)) and Fe³⁺ (iron(III)) ions. The Roman numerals indicate the charge."
+    },
+    {
+      "question": "Look up the ammonium ion's charge.",
+      "inputs": {"symbol": "NH4+"},
+      "expected_result": "+1",
+      "follow_up": "NH₄⁺ is a polyatomic cation with +1 charge. It's the only common positive polyatomic ion!"
+    }
+  ]
+}

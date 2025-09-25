@@ -1,0 +1,62 @@
+{
+  "id": "moles-mass",
+  "title": "Moles to Mass",
+  "formula": "m = n × M",
+  "description": "Calculate mass from moles and molar mass",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
+    {"id": "molar_mass", "label": "Molar Mass (M)", "unit": "g/mol", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "moles * molar_mass",
+    "result_unit": "g",
+    "result_label": "Mass"
+  },
+  "examples": [
+    {
+      "problem": "Calculate the mass of 0.500 mol of NaCl (molar mass = 58.4 g/mol).",
+      "solution": "m = n × M = 0.500 mol × 58.4 g/mol = 29.2 g",
+      "answer": "29.2 g"
+    }
+  ],
+  "study_tips": {
+    "concept": "This calculation converts moles (from stoichiometric calculations) back to mass (what you can actually weigh out in the laboratory).",
+    "key_points": [
+      "Multiply moles by molar mass to get mass",
+      "Essential for determining theoretical and actual yields",
+      "Used when preparing specific amounts of substances"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Stoichiometric calculations and limiting reagents",
+      "Unit 3 AoS 1: Quantitative analysis and solution preparation",
+      "Unit 4 AoS 1: Yield calculations in industrial processes"
+    ],
+    "common_errors": [
+      "Dividing instead of multiplying (confusing with mass to moles)",
+      "Using atomic mass instead of molar mass for compounds",
+      "Forgetting significant figures based on given data"
+    ],
+    "extensions": [
+      "How does this relate to percent yield calculations?",
+      "What if you needed to account for hydrated salts?",
+      "How would you scale this up for industrial production?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "How many grams are in 0.750 mol of sulfuric acid (H₂SO₄)? Molar mass = 98.08 g/mol",
+      "inputs": {"moles": 0.750, "molar_mass": 98.08},
+      "expected_result": 73.56,
+      "follow_up": "73.6 g of H₂SO₄. This is how you'd prepare a specific amount for a reaction or solution."
+    },
+    {
+      "question": "Calculate the mass of 2.50 mol of glucose (C₆H₁₂O₆). Molar mass = 180.16 g/mol",
+      "inputs": {"moles": 2.50, "molar_mass": 180.16},
+      "expected_result": 450.4,
+      "follow_up": "450 g of glucose! This demonstrates why we use moles - it's easier to work with 2.5 mol than 450 g in calculations."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "molarity",
+  "title": "Molarity Calculation",
+  "formula": "C = n / V",
+  "description": "Calculate molarity from moles and volume",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 3: Area of Study 1"],
+  "inputs": [
+    {"id": "moles", "label": "Moles (n)", "unit": "mol", "type": "number"},
+    {"id": "volume", "label": "Volume (V)", "unit": "L", "type": "number"}
+  ],
+  "calculation": {
+    "type": "basic_formula",
+    "formula": "moles / volume",
+    "result_unit": "M",
+    "result_label": "Molarity"
+  },
+  "examples": [
+    {
+      "problem": "Calculate the molarity of a solution containing 0.5 mol of NaCl dissolved in 2.0 L of solution.",
+      "solution": "C = n / V = 0.5 mol / 2.0 L = 0.25 M",
+      "answer": "0.25 M"
+    }
+  ],
+  "study_tips": {
+    "concept": "Molarity measures the concentration of a solution in moles of solute per litre of solution. It's temperature dependent because volume changes with temperature.",
+    "key_points": [
+      "Always use volume of final solution, not just solvent",
+      "Convert mL to L by dividing by 1000",
+      "Molarity is different from molality (mol/kg solvent)"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Use molarity in stoichiometric calculations",
+      "Unit 3 AoS 1: Connect to acid-base titrations and buffer solutions"
+    ],
+    "common_errors": [
+      "Using volume of solvent instead of total solution volume",
+      "Forgetting to convert between mL and L",
+      "Confusing molarity (M) with molality (m)"
+    ],
+    "extensions": [
+      "How would you prepare 500 mL of 0.1 M NaCl solution?",
+      "Compare molarity vs molality - when would you use each?",
+      "How does temperature affect molarity measurements?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "Calculate the molarity of a solution containing 2.5 mol of glucose dissolved in 5.0 L of solution.",
+      "inputs": {"moles": 2.5, "volume": 5.0},
+      "expected_result": 0.5,
+      "follow_up": "This solution is less concentrated than seawater (~0.6 M). What would happen if you doubled the amount of glucose?"
+    },
+    {
+      "question": "A student dissolves 0.8 mol of sodium chloride in enough water to make 400 mL of solution. Calculate the molarity.",
+      "inputs": {"moles": 0.8, "volume": 0.4},
+      "expected_result": 2.0,
+      "follow_up": "Remember to convert mL to L! This is a common source of errors in molarity calculations."
+    }
+  ]
+}

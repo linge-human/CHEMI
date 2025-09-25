@@ -1,0 +1,62 @@
+{
+  "id": "limiting-reagent",
+  "title": "Limiting Reagent",
+  "formula": "Compare mole ratios",
+  "description": "Determine the limiting reagent in a chemical reaction",
+  "category": "stoichiometry",
+  "vce_units": ["Unit 1: Area of Study 2", "Unit 4: Area of Study 1"],
+  "inputs": [
+    {"id": "moles_a", "label": "Moles of Reactant A", "unit": "mol", "type": "number"},
+    {"id": "coeff_a", "label": "Coefficient of A", "unit": "", "type": "number"},
+    {"id": "moles_b", "label": "Moles of Reactant B", "unit": "mol", "type": "number"},
+    {"id": "coeff_b", "label": "Coefficient of B", "unit": "", "type": "number"}
+  ],
+  "calculation": {
+    "type": "comparison",
+    "method": "mole_ratio"
+  },
+  "examples": [
+    {
+      "problem": "For 2H₂ + O₂ → 2H₂O, which is limiting: 3 mol H₂ or 2 mol O₂?",
+      "solution": "H₂ ratio: 3/2 = 1.5; O₂ ratio: 2/1 = 2.0; H₂ is limiting (smaller ratio)",
+      "answer": "H₂ is the limiting reagent"
+    }
+  ],
+  "study_tips": {
+    "concept": "The limiting reagent is the reactant that gets completely consumed first, determining how much product can form. It's like running out of one ingredient while cooking.",
+    "key_points": [
+      "Divide moles by coefficient for each reactant",
+      "The smallest ratio indicates the limiting reagent",
+      "The limiting reagent determines theoretical yield",
+      "Excess reagent remains after reaction completes"
+    ],
+    "vce_connections": [
+      "Unit 1 AoS 2: Stoichiometric calculations and yield",
+      "Unit 4 AoS 1: Industrial processes and efficiency"
+    ],
+    "common_errors": [
+      "Using mass instead of moles for comparison",
+      "Forgetting to use stoichiometric coefficients",
+      "Confusing limiting reagent with the one you have less of"
+    ],
+    "extensions": [
+      "How do you calculate the amount of excess reagent left?",
+      "How does limiting reagent affect percent yield?",
+      "What if there are three or more reactants?"
+    ]
+  },
+  "interactive_questions": [
+    {
+      "question": "For N₂ + 3H₂ → 2NH₃, you have 2 mol N₂ and 5 mol H₂. Which is limiting?",
+      "inputs": {"moles_a": 2, "coeff_a": 1, "moles_b": 5, "coeff_b": 3},
+      "expected_result": "H₂",
+      "follow_up": "H₂ is limiting! N₂ ratio = 2/1 = 2.0, H₂ ratio = 5/3 = 1.67. This is the Haber process for ammonia production."
+    },
+    {
+      "question": "For 2Al + 3Cl₂ → 2AlCl₃, with 4 mol Al and 9 mol Cl₂, find the limiting reagent.",
+      "inputs": {"moles_a": 4, "coeff_a": 2, "moles_b": 9, "coeff_b": 3},
+      "expected_result": "neither",
+      "follow_up": "Perfect stoichiometric ratio! Al ratio = 4/2 = 2.0, Cl₂ ratio = 9/3 = 3.0. Actually, Al is limiting (smaller ratio)."
+    }
+  ]
+}
